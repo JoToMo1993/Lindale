@@ -4,3 +4,8 @@
 *.jar
 *.war
 *.ear
+/Lindalie_API_Plugin/nbproject/private/
+/Lindale_API_Container/nbproject/private/
+/Lindale_API_Plugin/nbproject/private/
+/Lindale_API_Hibernate/nbproject/private/
+/Lindale_Domain/nbproject/private/
