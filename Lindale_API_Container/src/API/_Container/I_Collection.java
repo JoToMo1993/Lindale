@@ -27,11 +27,11 @@ public interface I_Collection extends I_AbstractCollection
     /**
      * @return list of all sub-collections [Collection|File]
      */
-    public List<I_AbstractCollection> getSubs();
+    public List<? extends I_AbstractCollection> getSubs();
     /**
      * @param subs list of all sub-collections [Collection|File]
      */
-    public void   setSubs(List<I_AbstractCollection> subs);
+    public void   setSubs(List<? extends I_AbstractCollection> subs);
     /**
      * @return the plugin made this collection
      */

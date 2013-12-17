@@ -4,17 +4,15 @@
  * and open the template in the editor.
  */
 
-package API._Container;
+package API._Utils;
 
 /**
  * @author  Morent Jochen <jochen.morent@students.fhv.at>
  * @org     FHV <fhv.at>
- * @project Lindale_API_Container
+ * @project Lindale_API_Plugin
  * @date    16.12.2013
  */
-public enum E_PluginTypes
+public enum E_MediaPlayerViewType
 {
-        IO_PLUGIN,
-    FILTER_PLUGIN,
-      VIEW_PLUGIN;
+    SMALL, MEDIUM, LARGE, VIDEO;
 }

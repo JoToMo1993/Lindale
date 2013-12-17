@@ -4,22 +4,15 @@
  * and open the template in the editor.
  */
 
-package API._Container;
+package API._Utils;
 
 /**
  * @author  Morent Jochen <jochen.morent@students.fhv.at>
  * @org     FHV <fhv.at>
- * @project Lindale_API_Container
+ * @project Lindale_API_Plugin
  * @date    16.12.2013
  */
-public interface I_Container
+public enum E_MediaPlayerLoopMode
 {
-    /**
-     * @return the containers ID within the data-base
-     */
-    public int  getID();
-    /**
-     * @param ID the containers ID within the data-base
-     */
-    public void setID(int ID);
+    SINGLE_LOOP, COLLECTION_LOOP, PLAYLIST_LOOP;
 }

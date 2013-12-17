@@ -12,14 +12,7 @@ package API._Container;
  * @project Lindale_API_Container
  * @date    16.12.2013
  */
-public interface I_Container
+public enum E_PluginState
 {
-    /**
-     * @return the containers ID within the data-base
-     */
-    public int  getID();
-    /**
-     * @param ID the containers ID within the data-base
-     */
-    public void setID(int ID);
+    ACTIVATED, DEACTIVATED;
 }

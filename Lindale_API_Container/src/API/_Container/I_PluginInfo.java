@@ -19,11 +19,11 @@ public interface I_PluginInfo
     /**
      * @return the type of plugin [IO|FILTER|VIEW]
      */
-    public E_PluginTypes  getType();
+    public E_PluginTyps  getType();
     /**
      * @param type the type of plugin [IO|FILTER|VIEW]
      */
-    public void          setType(E_PluginTypes type);
+    public void          setType(E_PluginTyps type);
     /**
      * @return name of the plugin
      */

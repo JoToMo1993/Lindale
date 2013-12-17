@@ -12,14 +12,18 @@ package API._Container;
  * @project Lindale_API_Container
  * @date    16.12.2013
  */
-public interface I_Container
+public interface I_Source extends I_Container
 {
     /**
-     * @return the containers ID within the data-base
+     * 
+     * @return the absolut path to the root folder of this source
      */
-    public int  getID();
+    public String getPath();
     /**
-     * @param ID the containers ID within the data-base
+     * 
+     * @param path the new absolut path of the root folder
      */
-    public void setID(int ID);
+    public void   setPath(String path);
+//    public ______ getUserData();
+//    public void   setUserData(______ UD);
 }

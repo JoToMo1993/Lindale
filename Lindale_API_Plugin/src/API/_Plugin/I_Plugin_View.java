@@ -4,22 +4,18 @@
  * and open the template in the editor.
  */
 
-package API._Container;
+package API._Plugin;
+
+import javafx.scene.layout.Pane;
 
 /**
  * @author  Morent Jochen <jochen.morent@students.fhv.at>
  * @org     FHV <fhv.at>
- * @project Lindale_API_Container
+ * @project Lindale_Plugin_API
  * @date    16.12.2013
  */
-public interface I_Container
+public interface I_Plugin_View
 {
-    /**
-     * @return the containers ID within the data-base
-     */
-    public int  getID();
-    /**
-     * @param ID the containers ID within the data-base
-     */
-    public void setID(int ID);
+    public Pane getView(int ID);
+    public void search (int ID, String searchText);
 }
