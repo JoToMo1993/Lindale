@@ -14,16 +14,16 @@ import java.util.Calendar;
  * @project Lindale_API_Container
  * @date    16.12.2013
  */
-public interface I_PluginInfo
+public interface I_PluginInfo extends I_Container
 {
     /**
      * @return the type of plugin [IO|FILTER|VIEW]
      */
-    public E_PluginTyps  getType();
+    public E_PluginTypes  getType();
     /**
      * @param type the type of plugin [IO|FILTER|VIEW]
      */
-    public void          setType(E_PluginTyps type);
+    public void          setType(E_PluginTypes type);
     /**
      * @return name of the plugin
      */

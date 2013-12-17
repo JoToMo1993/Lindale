@@ -124,4 +124,9 @@ public class PluginInfo implements I_PluginInfo
     {
         _instaledDate = date;
     }
+    @Override
+    public int getID()
+    {
+        return _ID;
+    }
 }
