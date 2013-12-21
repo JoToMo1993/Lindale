@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane id="MainPane" prefHeight="322.0" prefWidth="621.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.MainWindowController">
+  <center>
+    <SplitPane dividerPositions="0.2520193861066236" focusTraversable="true" prefHeight="160.0" prefWidth="200.0">
+      <items>
+        <ScrollPane fx:id="_pluginsScrollPane" minHeight="0.0" minWidth="0.0" prefHeight="296.0" prefWidth="173.0">
+          <content>
+            <Accordion fx:id="_pluginsAccordion" minWidth="152.0" prefWidth="152.0" />
+          </content>
+        </ScrollPane>
+        <BorderPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <center>
+            <SplitPane dividerPositions="0.6258503401360545" focusTraversable="true" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+              <items>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" />
+                <BorderPane prefHeight="200.0" prefWidth="200.0">
+                  <center>
+                    <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                      <content>
+                        <BorderPane minWidth="-Infinity" prefHeight="200.0" prefWidth="443.0">
+                          <center>
+                            <ListView prefHeight="+Infinity" prefWidth="+Infinity" />
+                          </center>
+                        </BorderPane>
+                      </content>
+                    </ScrollPane>
+                  </center>
+                </BorderPane>
+              </items>
+            </SplitPane>
+          </center>
+        </BorderPane>
+      </items>
+    </SplitPane>
+  </center>
+  <top>
+    <MenuBar fx:id="_menuBar">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Close" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Delete" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </top>
+</BorderPane>

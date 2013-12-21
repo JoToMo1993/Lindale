@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package at.fhv.lindale.gui;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,14 +19,30 @@ import javafx.stage.Stage;
  */
 public class LindaleGUI extends Application
 {
-    
+
     @Override
     public void start(Stage stage) throws Exception
     {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
+        //http://stackoverflow.com/questions/10751271/accessing-fxml-controller-class
+        FXMLLoader loader = new FXMLLoader();
+        Parent root = (Parent) loader.load(getClass().getResourceAsStream("MainWindow.fxml"));
+        MainWindowController mainController = (MainWindowController) loader.getController();
+//        Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
+        //For Testing
+        HashMap<String, ArrayList<String>> pluginMap = new HashMap();
+        ArrayList<String> musicPlugin = new ArrayList<>();
+        musicPlugin.add("Artist");
+        musicPlugin.add("Titile");
+        musicPlugin.add("Genre");
+        pluginMap.put("Music", musicPlugin);
+        ArrayList<String> moviePlugin = new ArrayList<>();
+        moviePlugin.add("Genre");
+        moviePlugin.add("Title");
+        pluginMap.put("Movies", moviePlugin);
+        mainController.addPlugins(pluginMap);
+
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
     }
@@ -40,5 +57,5 @@ public class LindaleGUI extends Application
     {
         launch(args);
     }
-    
+
 }
