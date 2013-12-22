@@ -10,7 +10,7 @@
   <center>
     <SplitPane dividerPositions="0.2520193861066236" focusTraversable="true" prefHeight="160.0" prefWidth="200.0">
       <items>
-        <ScrollPane fx:id="_pluginsScrollPane" minHeight="0.0" minWidth="0.0" prefHeight="296.0" prefWidth="173.0">
+        <ScrollPane fx:id="_pluginsScrollPane" minHeight="0.0" minWidth="0.0" prefHeight="296.0" prefWidth="173.0" fitToWidth="true" >
           <content>
             <Accordion fx:id="_pluginsAccordion" minWidth="152.0" prefWidth="152.0" />
           </content>
@@ -19,16 +19,12 @@
           <center>
             <SplitPane dividerPositions="0.6258503401360545" focusTraversable="true" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
               <items>
-                <BorderPane prefHeight="200.0" prefWidth="200.0" />
+                <BorderPane fx:id="_viewPluginPane" prefHeight="200.0" prefWidth="200.0" />
                 <BorderPane prefHeight="200.0" prefWidth="200.0">
                   <center>
-                    <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                    <ScrollPane fx:id="_errorScrollPane" prefHeight="200.0" prefWidth="200.0" fitToHeight="true" fitToWidth="true" >
                       <content>
-                        <BorderPane minWidth="-Infinity" prefHeight="200.0" prefWidth="443.0">
-                          <center>
-                            <ListView prefHeight="+Infinity" prefWidth="+Infinity" />
-                          </center>
-                        </BorderPane>
+                        <ListView fx:id="_errorListView" prefHeight="200.0" prefWidth="200.0" />
                       </content>
                     </ScrollPane>
                   </center>
@@ -45,17 +41,27 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
           <items>
-            <MenuItem mnemonicParsing="false" text="Delete" />
+            <MenuItem mnemonicParsing="false" onAction="#newCollection" text="New Collection" />
+            <MenuItem mnemonicParsing="false" onAction="#addMode" text="Add Mode" />
+            <MenuItem mnemonicParsing="false" onAction="#deleteCollection" text="Delete Collection" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Tools">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#showOptions" text="Options" />
+            <MenuItem mnemonicParsing="false" onAction="#showPluginManager" text="Plugin Management" />
+            <MenuItem mnemonicParsing="false" onAction="#showSourceManager" text="Source Manager" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About" />
+            <MenuItem mnemonicParsing="false" onAction="#showAbout" text="About" />
+            <MenuItem mnemonicParsing="false" onAction="#showHelp" text="Help" />
           </items>
         </Menu>
       </menus>
