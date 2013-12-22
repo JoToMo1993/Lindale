@@ -20,6 +20,7 @@ import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
@@ -28,6 +29,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -142,8 +144,12 @@ public class MainWindowController implements Initializable
     }
     
     @FXML
-    public void showOptions(ActionEvent e)
+    public void showSettings(ActionEvent e) throws IOException
     {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setScene(new Scene((Parent)FXMLLoader.load(getClass().getResource("SettingsWindow.fxml"))));
+        stage.setTitle("Settings");
+        stage.show();
     }
     
     @FXML

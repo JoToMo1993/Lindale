@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package at.fhv.lindale.gui;
 
 import java.net.URL;
@@ -14,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -23,14 +23,13 @@ import javafx.scene.layout.GridPane;
  */
 public class GeneralSettingsController implements Initializable
 {
+
     @FXML
     private GridPane _generalSettingsWindow;
     @FXML
     private Label _languageLabel;
     @FXML
     private ComboBox<?> _languagesBox;
-    @FXML
-    private Button _cencelButton;
     @FXML
     private Button _okButton;
     @FXML
@@ -43,6 +42,11 @@ public class GeneralSettingsController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         // TODO
-    }    
-    
+    }
+
+    private void okClicked(MouseEvent e)
+    {
+        System.out.println("ok fired");
+    }
+
 }

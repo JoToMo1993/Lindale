@@ -10,7 +10,7 @@
   <center>
     <SplitPane dividerPositions="0.2520193861066236" focusTraversable="true" prefHeight="160.0" prefWidth="200.0">
       <items>
-        <ScrollPane fx:id="_pluginsScrollPane" minHeight="0.0" minWidth="0.0" prefHeight="296.0" prefWidth="173.0" fitToWidth="true" >
+        <ScrollPane fx:id="_pluginsScrollPane" fitToWidth="true" minHeight="0.0" minWidth="0.0" prefHeight="296.0" prefWidth="173.0">
           <content>
             <Accordion fx:id="_pluginsAccordion" minWidth="152.0" prefWidth="152.0" />
           </content>
@@ -22,7 +22,7 @@
                 <BorderPane fx:id="_viewPluginPane" prefHeight="200.0" prefWidth="200.0" />
                 <BorderPane prefHeight="200.0" prefWidth="200.0">
                   <center>
-                    <ScrollPane fx:id="_errorScrollPane" prefHeight="200.0" prefWidth="200.0" fitToHeight="true" fitToWidth="true" >
+                    <ScrollPane fx:id="_errorScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
                       <content>
                         <ListView fx:id="_errorListView" prefHeight="200.0" prefWidth="200.0" />
                       </content>
@@ -53,8 +53,8 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Tools">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#showOptions" text="Options" />
-            <MenuItem mnemonicParsing="false" onAction="#showPluginManager" text="Plugin Management" />
+            <MenuItem mnemonicParsing="false" onAction="#showSettings" text="Settings" />
+            <MenuItem mnemonicParsing="false" onAction="#showPluginManager" text="Plugin Manager" />
             <MenuItem mnemonicParsing="false" onAction="#showSourceManager" text="Source Manager" />
           </items>
         </Menu>
