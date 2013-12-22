@@ -51,10 +51,7 @@ public class SettingsWindowController implements Initializable
         // TODO
     }
 
-    public void onSourceManagerSelected(ActionEvent e)
-    {
-        System.out.println("source fired");
-    }
+
 
     @FXML
     private void onGeneralSelected(MouseEvent event) throws IOException
@@ -67,21 +64,25 @@ public class SettingsWindowController implements Initializable
     @FXML
     private void onSourceManagerSelected(MouseEvent event)
     {
+        System.out.println("source manager");
     }
 
     @FXML
     private void onPlayerSettingsSelected(MouseEvent event)
     {
+        System.out.println("player settings");
     }
 
     @FXML
     private void onShortcutsSelected(MouseEvent event)
     {
+        System.out.println("shortcut settings");
     }
 
     @FXML
     private void onSearchSettingsSelected(MouseEvent event)
     {
+        System.out.println("search settings");
     }
 
 }

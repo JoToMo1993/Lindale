@@ -44,7 +44,7 @@ public class GeneralSettingsController implements Initializable
         // TODO
     }
 
-    private void okClicked(MouseEvent e)
+    public void okClicked(MouseEvent e)
     {
         System.out.println("ok fired");
     }
