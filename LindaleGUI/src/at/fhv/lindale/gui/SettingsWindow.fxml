@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<BorderPane fx:id="_settingsWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.SettingsWindowController">
+  <center>
+    <SplitPane dividerPositions="0.19230769230769232" focusTraversable="true" prefHeight="160.0" prefWidth="200.0">
+      <items>
+        <BorderPane prefHeight="398.0" prefWidth="129.0">
+          <center>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+              <children>
+                <Label fx:id="_generalLabel" alignment="TOP_RIGHT" onMouseClicked="#onGeneralSelected" text="General" VBox.vgrow="NEVER" />
+                <Label fx:id="_sourceManagerLabel" onMouseClicked="#onSourceManagerSelected" text="Source Manager" />
+                <Label id="_playerManagerLabel" fx:id="_playerSettingsLabel" onMouseClicked="#onPlayerSettingsSelected" text="Player Settings" />
+                <Label id="_shortcutsLabeö" fx:id="_shortcutsLabel" onMouseClicked="#onShortcutsSelected" text="Keyboard Shortcuts" />
+                <Label fx:id="_searchSettingsLabel" onMouseClicked="#onSearchSettingsSelected" text="Search Settings" />
+              </children>
+            </VBox>
+          </center>
+        </BorderPane>
+        <ScrollPane id="_currentSettingsPane" fx:id="_currentSettingsPane" content="$null" prefHeight="200.0" prefWidth="200.0" />
+      </items>
+    </SplitPane>
+  </center>
+</BorderPane>
