@@ -1,0 +1,19 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="dialect">at.fhv.lindale.impl.db.dialect.SQLiteDialect</property>
+        <property name="connection.driver_class">org.sqlite.JDBC</property>
+        <property name="connection.url">jdbc:sqlite:lindale.db</property>
+        <property name="connection.username"></property>
+        <property name="connection.password"></property>
+        
+        <mapping class="at.fhv.lindale.impl.domain.A_Collection" />
+        <mapping class="at.fhv.lindale.impl.domain.Collection"   />
+        <mapping class="at.fhv.lindale.impl.domain.A_File"       />
+        <mapping class="at.fhv.lindale.impl.domain.PluginInfo"   />
+        <mapping class="at.fhv.lindale.impl.domain.Source"       />
+        <mapping class="at.fhv.lindale.impl.domain.StandardFile" />
+    </session-factory>
+</hibernate-configuration>

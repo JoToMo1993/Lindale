@@ -1,0 +1,5 @@
+Collection und File durch CTYPE unterscheiden
+
+File hat Liste an Metadaten[CID|FORMAT_TYPE]
+
+Metadaten können nach Tags gefragt werden.
