@@ -62,7 +62,7 @@ public class MainWindowController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         // TODO
-
+        
     }
 
     // Parameters will change

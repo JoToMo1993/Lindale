@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<BorderPane id="BorderPane" fx:id="_pluginManagerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.PluginManagerController">
+  <center>
+    <ScrollPane prefHeight="200.0" prefWidth="200.0" fitToHeight="true" fitToWidth="true"  >
+      <content>
+        <Accordion prefHeight="400.0" prefWidth="483.0">
+          <expandedPane>
+            <TitledPane fx:id="x1" animated="false" text="untitled">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+          </expandedPane>
+          <panes>
+          </panes>
+        </Accordion>
+      </content>
+    </ScrollPane>
+  </center>
+  <right>
+    <VBox prefHeight="399.0" prefWidth="116.0">
+      <children>
+        <Button id="_activateDeactivateBtn" mnemonicParsing="false" prefWidth="73.0" text="Activate">
+          <VBox.margin>
+            <Insets left="5.0" top="20.0" fx:id="x2" />
+          </VBox.margin>
+        </Button>
+        <Button id="_" mnemonicParsing="false" prefWidth="73.0" text="Uninstall" VBox.margin="$x2" />
+        <Button id="_installBtn" mnemonicParsing="false" prefWidth="73.0" text="Install" VBox.margin="$x2" />
+      </children>
+    </VBox>
+  </right>
+</BorderPane>
