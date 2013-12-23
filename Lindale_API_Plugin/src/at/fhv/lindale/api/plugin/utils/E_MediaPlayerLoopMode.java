@@ -4,20 +4,15 @@
  * and open the template in the editor.
  */
 
-package at.fhv.lindale.api.plugin;
-
-import at.fhv.lindale.api.plugin.utils.I_PluginManager;
-import java.util.List;
+package at.fhv.lindale.api.plugin.utils;
 
 /**
  * @author  Morent Jochen <jochen.morent@students.fhv.at>
  * @org     FHV <fhv.at>
- * @project Lindale_Plugin_API
+ * @project Lindale_API_Plugin
  * @date    16.12.2013
  */
-public interface I_Plugin
+public enum E_MediaPlayerLoopMode
 {
-    public void           setup();
-    public void           ativate(I_PluginManager pm);
-    public List<I_Plugin> getDependencies();
+    SINGLE_LOOP, COLLECTION_LOOP, PLAYLIST_LOOP;
 }

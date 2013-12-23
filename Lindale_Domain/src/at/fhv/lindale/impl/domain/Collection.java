@@ -8,15 +8,16 @@ package at.fhv.lindale.impl.domain;
 
 import at.fhv.lindale.api.container.I_AbstractCollection;
 import at.fhv.lindale.api.container.I_Collection;
-import at.fhv.lindale.api.container.I_PluginInfo;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.Table;
+import javax.persistence.ManyToMany;
 
 /**
  * @author  Morent Jochen <jochen.morent@students.fhv.at>
@@ -25,20 +26,19 @@ import javax.persistence.Table;
  * @date    17.12.2013
  */
 @Entity
-@Table(name="COLLECTION")
-public class Collection implements I_Collection, Serializable
+@DiscriminatorValue("C")
+public class Collection extends A_Collection 
+                        implements I_Collection, Serializable
 {
-    @Column(name = "CID")
-    @Id
-    private int    _ID;
     @Column(name = "NAME")
     private String _name;
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "TOPSUBCOLL",
-               joinColumns        = {@JoinColumn(name = "CID",
-                                                 referencedColumnName = "TCID")},
-               inverseJoinColumns = {@JoinColumn(name = "CID",
-                                                 referencedColumnName = "SCID")})
-    List<I_AbstractCollection> _subs;
+               joinColumns        = {@JoinColumn(name = "TCID",
+                                                 referencedColumnName = "CID")},
+               inverseJoinColumns = {@JoinColumn(name = "SCID",
+                                                 referencedColumnName = "CID")})
+    List<A_Collection> _subs;
     
     @Override
     public String getName()
@@ -53,28 +53,11 @@ public class Collection implements I_Collection, Serializable
     @Override
     public List<I_AbstractCollection> getSubs()
     {
-        return _subs;
+        return new LinkedList(_subs);
     }
     @Override
     public void setSubs(List<I_AbstractCollection> subs)
     {
-        _subs = subs;
-    }
-    @Override
-    public String getRelatedPlugin()
-    {
-        //TODO noch keine Spalte in der Datenbank
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    @Override
-    public void setRelatedPlugin(I_PluginInfo plugin)
-    {
-        //TODO noch keine Spalte in der Datenbank
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    @Override
-    public int getID()
-    {
-        return _ID;
+        /*_subs = subs;*/
     }
 }

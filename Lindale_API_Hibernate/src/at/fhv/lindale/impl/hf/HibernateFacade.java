@@ -101,7 +101,7 @@ public final class HibernateFacade implements I_HibernateFacade
             
             ret = session.createCriteria(Collection.class).list();
         } catch(HibernateException ex) {
-            
+            System.out.println(ex);
         } finally {
             if(session != null)
             {

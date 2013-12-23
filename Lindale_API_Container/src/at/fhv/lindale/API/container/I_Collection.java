@@ -32,12 +32,4 @@ public interface I_Collection extends I_AbstractCollection
      * @param subs list of all sub-collections [Collection|File]
      */
     public void   setSubs(List<I_AbstractCollection> subs);
-    /**
-     * @return the plugin made this collection
-     */
-    public String getRelatedPlugin();
-    /**
-     * @param plugin the plugin made this collection
-     */
-    public void   setRelatedPlugin(I_PluginInfo plugin);
 }

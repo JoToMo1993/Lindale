@@ -37,15 +37,6 @@ public interface I_File extends I_AbstractCollection
     /**
      * @return hash of the file (used for duplicates)
      */
-    public String   getHash();
-    /**
-     * @param hash hash of the file (used for duplicates)
-     */
-    public void     setHash(String hash);
-    /**
-     * @param tag the mata-data's tag ("JSON" is for the standard implementation)
-     * @return the meta-data
-     */
     public String   getMetaData(String tag);
     /**
      * @param tag the mata-data's tag ("JSON" is for the standard implementation)

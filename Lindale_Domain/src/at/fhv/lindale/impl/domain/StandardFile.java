@@ -6,16 +6,8 @@
 
 package at.fhv.lindale.impl.domain;
 
-import at.fhv.lindale.api.container.I_File;
-import at.fhv.lindale.api.container.I_Source;
-import java.io.Serializable;
-import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 /**
  * @author  Morent Jochen <jochen.morent@students.fhv.at>
@@ -24,57 +16,10 @@ import javax.persistence.Table;
  * @date    17.12.2013
  */
 @Entity
-@Table(name="COLLECTION")
-public class StandardFile implements I_File, Serializable
+public class StandardFile extends A_File
 {
-    @Column(name = "CID")
-    @Id
-    private int      _ID;
-    @JoinColumn(name = "FSID", referencedColumnName = "SID")
-    @ManyToOne
-    private I_Source _source;
-    @Column(name = "FILE_PATH")
-    private String   _path;
-    @Column(name = "MATADATA")
+    @Column(name = "METADATA")
     private String   _metaDataJSON;
-    @Column(name = "CHECKSUM")
-    private String   _checksum;
-    
-    @Override
-    public I_Source getSource()
-    {
-        return _source;
-    }
-    @Override
-    public void setSource(I_Source src)
-    {
-        _source = src;
-    }
-    @Override
-    public String getPath()
-    {
-        return _path;
-    }
-    @Override
-    public void setPath(String path)
-    {
-        _path = path;
-    }
-    @Override
-    public String getAbsolutPath()
-    {
-        return _source.getPath() + _path;
-    }
-    @Override
-    public String getHash()
-    {
-        return _checksum;
-    }
-    @Override
-    public void setHash(String hash)
-    {
-        _checksum = hash;
-    }
     @Override
     public String getMetaData(String tag)
     {
@@ -91,10 +36,5 @@ public class StandardFile implements I_File, Serializable
         {
             _metaDataJSON = meta;
         }
-    }
-    @Override
-    public int getID()
-    {
-        return _ID;
     }
 }
