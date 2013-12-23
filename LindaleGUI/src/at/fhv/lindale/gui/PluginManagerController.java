@@ -17,7 +17,7 @@ import javafx.scene.layout.BorderPane;
 /**
  * FXML Controller class
  *
- * @author Morent Jochen <jochen.morent@students.fhv.at>
+ * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  */
 public class PluginManagerController implements Initializable
 {

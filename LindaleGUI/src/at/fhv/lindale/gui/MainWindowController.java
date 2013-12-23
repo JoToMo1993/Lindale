@@ -38,7 +38,7 @@ import javafx.stage.StageStyle;
 
 /**
  *
- * @author Morent Jochen <jochen.morent@students.fhv.at>
+ * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  */
 public class MainWindowController implements Initializable
 {

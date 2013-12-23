@@ -19,7 +19,7 @@ import javafx.scene.layout.GridPane;
 /**
  * FXML Controller class
  *
- * @author Morent Jochen <jochen.morent@students.fhv.at>
+ * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  */
 public class GeneralSettingsController implements Initializable
 {

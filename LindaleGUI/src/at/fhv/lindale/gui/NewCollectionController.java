@@ -17,7 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- * @author Morent Jochen <jochen.morent@students.fhv.at>
+ * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  * @org FHV <fhv.at>
  * @project LindaleGUI
  * @date 21-Dec-2013
