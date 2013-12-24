@@ -40,6 +40,7 @@ public class LindaleGUI extends Application
         moviePlugin.add("Title");
         pluginMap.put("Movies", moviePlugin);
         mainController.addPlugins(pluginMap);
+        mainController.setFacade(new FakeFacade());
 
         Scene scene = new Scene(root);
 

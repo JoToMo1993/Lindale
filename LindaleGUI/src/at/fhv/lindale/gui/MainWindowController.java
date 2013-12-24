@@ -5,6 +5,7 @@
  */
 package at.fhv.lindale.gui;
 
+import at.fhv.lindale.api.hf.I_HibernateFacade;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
@@ -25,7 +27,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
@@ -35,12 +39,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.xnap.commons.i18n.I18n;
 
 /**
  *
  * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  */
-public class MainWindowController implements Initializable
+public class MainWindowController implements Initializable, I_ControllerSetters
 {
 
     @FXML
@@ -55,6 +60,11 @@ public class MainWindowController implements Initializable
     private ScrollPane _errorScrollPane;
     @FXML
     private ListView _errorListView;
+
+    private I18n _translator;
+
+    private I_HibernateFacade _facade;
+
     //Used for creating mouse events see addPlugins
     private int _pluginIndex = 0;
 
@@ -62,7 +72,7 @@ public class MainWindowController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         // TODO
-        
+
     }
 
     // Parameters will change
@@ -102,7 +112,36 @@ public class MainWindowController implements Initializable
 //        _pluginsScrollPane.setFitToWidth(true);
 //        _errorScrollPane.setFitToHeight(true);
 //        _errorScrollPane.setFitToWidth(true);
-        
+
+    }
+
+    public void setTranslator(I18n translator)
+    {
+        if (_translator == null)
+        {
+            _translator = translator;
+            translateGui();
+        }
+
+    }
+
+    public void setFacade (I_HibernateFacade facede)
+    {
+        _facade = facede;
+    }
+
+    private void translateGui()
+    {
+        ObservableList<Menu> menus = _menuBar.getMenus();
+        for (Menu currentMenu : menus)
+        {
+            currentMenu.setText(_translator.tr(currentMenu.getText()));
+            ObservableList<MenuItem> items = currentMenu.getItems();
+            for (MenuItem currentItem : items)
+            {
+                currentItem.setText(_translator.tr(currentItem.getText()));
+            }
+        }
     }
 
     @FXML
@@ -124,6 +163,7 @@ public class MainWindowController implements Initializable
     @FXML
     public void newCollection(ActionEvent e) throws IOException
     {
+        // StgeStyle remove minimaze and maximaze button from window decoration
         Stage stage = new Stage(StageStyle.UTILITY);
         stage.setTitle("New Collection");
         stage.setResizable(false);
@@ -132,37 +172,44 @@ public class MainWindowController implements Initializable
         stage.setScene(new Scene(root));
         stage.show();
     }
-    
+
     @FXML
     public void addMode(ActionEvent e)
     {
     }
-    
+
     @FXML
     public void deleteCollection(ActionEvent e)
     {
     }
-    
+
     @FXML
     public void showSettings(ActionEvent e) throws IOException
     {
         Stage stage = new Stage(StageStyle.DECORATED);
-        stage.setScene(new Scene((Parent)FXMLLoader.load(getClass().getResource("SettingsWindow.fxml"))));
+        stage.setScene(new Scene((Parent) FXMLLoader.load(getClass().getResource("SettingsWindow.fxml"))));
         stage.setTitle("Settings");
         stage.show();
     }
-    
+
     @FXML
-    public void showPluginManager(ActionEvent e)
+    public void showPluginManager(ActionEvent e) throws IOException
+    {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        FXMLLoader loader = new FXMLLoader();
+        Parent parent = (Parent)loader.load(getClass().getResourceAsStream("PluginManager.fxml"));
+        stage.setScene(new Scene(parent));
+        PluginManagerController pluginManagerController = loader.getController();
+        pluginManagerController.setFacade(_facade);
+        pluginManagerController.setTranslator(_translator);
+        pluginManagerController.fillPluginInfo();
+        stage.setTitle("PluginManager");
+        stage.show();
+    }
+
+    @FXML
+    public void showSourceManager(ActionEvent e)
     {
     }
-    
-    @FXML
-    public void showSourceManager (ActionEvent e)
-    {
-    }
-    
-    
-    
 
 }

@@ -9,9 +9,9 @@
 
 <BorderPane id="BorderPane" fx:id="_pluginManagerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.PluginManagerController">
   <center>
-    <ScrollPane prefHeight="200.0" prefWidth="200.0" fitToHeight="true" fitToWidth="true"  >
+    <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
       <content>
-        <Accordion prefHeight="400.0" prefWidth="483.0">
+        <Accordion fx:id="_pluginsAccordion" prefHeight="400.0" prefWidth="483.0">
           <expandedPane>
             <TitledPane fx:id="x1" animated="false" text="untitled">
               <content>
@@ -19,8 +19,6 @@
               </content>
             </TitledPane>
           </expandedPane>
-          <panes>
-          </panes>
         </Accordion>
       </content>
     </ScrollPane>
