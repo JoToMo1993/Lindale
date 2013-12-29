@@ -14,6 +14,7 @@ import at.fhv.lindale.api.container.I_PluginInfo;
 import at.fhv.lindale.api.container.I_Source;
 import at.fhv.lindale.api.hf.I_HibernateFacade;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -33,9 +34,13 @@ public class FakeFacade implements I_HibernateFacade{
     @Override
     public List<I_PluginInfo> loadAll_PluginInfos()
     {
-        FakePluginInfo plugin1 = new FakePluginInfo(E_PluginTypes.IO_PLUGIN, "MP3IO", "1.2", null, null, E_PluginState.ACTIVATED, null, 1);
-        FakePluginInfo plugin2 = new FakePluginInfo(E_PluginTypes.FILTER_PLUGIN, "MP3_Filter", "2.2", null, null, E_PluginState.DEACTIVATED, null, 2);
-        FakePluginInfo plugin3 = new FakePluginInfo(E_PluginTypes.VIEW_PLUGIN, "MP3_View", "1.0", null, null, E_PluginState.ACTIVATED, null, 3);
+        Calendar cal = Calendar.getInstance();
+        cal.set(2012, 6, 30);
+        FakePluginInfo plugin1 = new FakePluginInfo(E_PluginTypes.IO_PLUGIN, "MP3IO", "1.2", null, null, E_PluginState.ACTIVATED, cal, 1);
+        cal.set(2013, 9, 9);
+        FakePluginInfo plugin2 = new FakePluginInfo(E_PluginTypes.FILTER_PLUGIN, "MP3_Filter", "2.2", null, null, E_PluginState.DEACTIVATED, cal, 2);
+        cal.set(6, 6, 2011);
+        FakePluginInfo plugin3 = new FakePluginInfo(E_PluginTypes.VIEW_PLUGIN, "MP3_View", "1.0", null, null, E_PluginState.ACTIVATED, cal, 3);
         ArrayList<I_PluginInfo> result = new ArrayList<>();
         result.add(plugin3);
         result.add(plugin2);

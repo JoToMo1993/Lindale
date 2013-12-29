@@ -19,6 +19,8 @@ import javafx.stage.Stage;
  */
 public class LindaleGUI extends Application
 {
+    
+        public static final String GRAPHICS_LOCATION = "/at/fhv/lindale/gui/graphics/";
 
     @Override
     public void start(Stage stage) throws Exception

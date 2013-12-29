@@ -7,21 +7,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<BorderPane id="BorderPane" fx:id="_pluginManagerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.PluginManagerController">
+<BorderPane id="BorderPane" fx:id="_pluginManagerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="305.99993896484375" prefWidth="827.9999000000025" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.PluginManagerController">
   <center>
-    <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
-      <content>
+    <BorderPane prefHeight="249.0" prefWidth="719.0">
+      <center>
         <Accordion fx:id="_pluginsAccordion" prefHeight="400.0" prefWidth="483.0">
           <expandedPane>
-            <TitledPane fx:id="x1" animated="false" text="untitled">
+            <TitledPane id="x1" animated="false" text="untitled">
               <content>
                 <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
             </TitledPane>
           </expandedPane>
         </Accordion>
-      </content>
-    </ScrollPane>
+      </center>
+    </BorderPane>
   </center>
   <right>
     <VBox prefHeight="399.0" prefWidth="116.0">

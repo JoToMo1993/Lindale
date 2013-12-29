@@ -193,9 +193,10 @@ public class MainWindowController implements Initializable, I_ControllerSetters
     }
 
     @FXML
-    public void showPluginManager(ActionEvent e) throws IOException
+    public void showPluginManager(ActionEvent e) throws IOException, Exception
     {
         Stage stage = new Stage(StageStyle.DECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader();
         Parent parent = (Parent)loader.load(getClass().getResourceAsStream("PluginManager.fxml"));
         stage.setScene(new Scene(parent));

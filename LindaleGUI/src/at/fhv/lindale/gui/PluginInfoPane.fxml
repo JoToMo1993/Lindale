@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<GridPane id="PluginInfoPane" fx:id="_PluginInfoPane" gridLinesVisible="false" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="217.0" prefWidth="582.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.PluginInfoPaneController">
+  <children>
+    <ImageView fx:id="_typeIcon" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+    <Label id="_pluginName" fx:id="_nameLabel" text="Name" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+      <labelFor>
+        <Label fx:id="_pluginName" prefWidth="73.0" text="Plugin Name" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+      </labelFor>
+    </Label>
+    <fx:reference source="_pluginName" />
+    <Label fx:id="_versionLabel" text="Version" GridPane.columnIndex="3" GridPane.rowIndex="0">
+      <labelFor>
+        <Label fx:id="_pluginVersion" text="Plugin Version" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+      </labelFor>
+    </Label>
+    <fx:reference source="_pluginVersion" />
+    <Label fx:id="_statusLabel" text="Status" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <labelFor>
+        <Label fx:id="_pluginStatus" text="Plugin status" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      </labelFor>
+    </Label>
+    <fx:reference source="_pluginStatus" />
+    <Label fx:id="_authorLabel" text="Author Label" GridPane.columnIndex="3" GridPane.rowIndex="1">
+      <labelFor>
+        <Label fx:id="_pluginAuthor" text="Plugin Author" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+      </labelFor>
+    </Label>
+    <fx:reference source="_pluginAuthor" />
+    <Label fx:id="_websiteLabel" text="Website" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <labelFor>
+        <Hyperlink fx:id="_pluginHyperlink" text="Plugin Website" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      </labelFor>
+    </Label>
+    <fx:reference source="_pluginHyperlink" />
+    <Label fx:id="_installDateLabel" text="Install date" GridPane.columnIndex="3" GridPane.rowIndex="2">
+      <labelFor>
+        <Label fx:id="_pluginInstallDate" text="xx.xx.xx" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      </labelFor>
+    </Label>
+    <fx:reference source="_pluginInstallDate" />
+  </children>
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.0" minWidth="0.0" percentWidth="10.0" prefWidth="59.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="0.0" percentWidth="22.5" prefWidth="99.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="0.0" percentWidth="22.5" prefWidth="116.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.0" minWidth="0.0" percentWidth="22.5" prefWidth="154.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" percentWidth="22.5" prefWidth="145.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="178.0" minHeight="10.0" percentHeight="33.0" prefHeight="50.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="104.0" minHeight="2.0" percentHeight="33.0" prefHeight="41.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="98.0" minHeight="10.0" percentHeight="33.0" prefHeight="46.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>
