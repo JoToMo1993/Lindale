@@ -46,6 +46,7 @@
       </labelFor>
     </Label>
     <fx:reference source="_pluginInstallDate" />
+    <Label fx:id="_hiddenID" text="Label" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="1" />
   </children>
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.0" minWidth="0.0" percentWidth="10.0" prefWidth="59.0" />

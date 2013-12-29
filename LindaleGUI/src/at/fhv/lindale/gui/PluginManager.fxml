@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<BorderPane id="BorderPane" fx:id="_pluginManagerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="305.99993896484375" prefWidth="827.9999000000025" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.PluginManagerController">
+<BorderPane id="BorderPane" fx:id="_pluginManagerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="305.99993896484375" prefWidth="946.9999000000025" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.PluginManagerController">
   <center>
     <BorderPane prefHeight="249.0" prefWidth="719.0">
       <center>
@@ -26,13 +26,13 @@
   <right>
     <VBox prefHeight="399.0" prefWidth="116.0">
       <children>
-        <Button id="_activateDeactivateBtn" mnemonicParsing="false" prefWidth="73.0" text="Activate">
+        <Button fx:id="_activateDeactivateBtn" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActivateDeactivate" prefWidth="96.9998779296875" text="Activate">
           <VBox.margin>
             <Insets left="5.0" top="20.0" fx:id="x2" />
           </VBox.margin>
         </Button>
-        <Button id="_" mnemonicParsing="false" prefWidth="73.0" text="Uninstall" VBox.margin="$x2" />
-        <Button id="_installBtn" mnemonicParsing="false" prefWidth="73.0" text="Install" VBox.margin="$x2" />
+        <Button id="_" fx:id="_uninstallBtn" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onUninstall" prefWidth="97.0" text="Uninstall" VBox.margin="$x2" />
+        <Button fx:id="_installBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onInstall" prefWidth="97.0" text="Install" VBox.margin="$x2" />
       </children>
     </VBox>
   </right>

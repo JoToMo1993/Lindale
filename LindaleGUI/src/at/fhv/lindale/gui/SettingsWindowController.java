@@ -56,7 +56,6 @@ public class SettingsWindowController implements Initializable
     @FXML
     private void onGeneralSelected(MouseEvent event) throws IOException
     {
-        System.out.println("event fired");
         GridPane generalSettings = FXMLLoader.load(getClass().getResource("GeneralSettings.fxml"));
         _currentSettingsPane.setContent(generalSettings);
     }

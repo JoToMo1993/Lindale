@@ -5,6 +5,7 @@
  */
 package at.fhv.lindale.gui;
 
+import at.fhv.lindale.api.container.E_PluginState;
 import at.fhv.lindale.api.hf.I_HibernateFacade;
 import java.net.URL;
 import java.util.List;
@@ -19,12 +20,22 @@ import at.fhv.lindale.api.container.I_PluginInfo;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Accordion;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -42,6 +53,14 @@ public class PluginManagerController implements Initializable, I_ControllerSette
     private Insets x2;
     private I18n _translator;
     private I_HibernateFacade _facade;
+    @FXML
+    private Button _activateDeactivateBtn;
+    @FXML
+    private Button _uninstallBtn;
+    @FXML
+    private Button _installBtn;
+    private HashMap<Integer, I_PluginInfo> _pluginInfosMap = new HashMap<>();
+    private HashMap<Pane, Integer> _paneIDMap = new HashMap<>();
 
     /**
      * Initializes the controller class.
@@ -67,17 +86,21 @@ public class PluginManagerController implements Initializable, I_ControllerSette
     public void fillPluginInfo() throws IOException, Exception
     {
         List<I_PluginInfo> pluginInfos = _facade.loadAll_PluginInfos();
-        for (I_PluginInfo current : pluginInfos)
+        for (I_PluginInfo currentInfo : pluginInfos)
         {
             TitledPane titledPane = new TitledPane();
-            titledPane.setText(current.getName() + "\t" + current.getState() + "\t" + current.getVersion());
+            titledPane.setText(currentInfo.getName() + "\t" + currentInfo.getState() + "\t" + currentInfo.getVersion());
             FXMLLoader loader = new FXMLLoader();
             GridPane infoPane = (GridPane) loader.load(getClass().getResourceAsStream("PluginInfoPane.fxml"));
+            _pluginInfosMap.put(currentInfo.getID(), currentInfo);
+            // every infoPane is associated with the id of the plugin described in the pane
+            _paneIDMap.put(infoPane, currentInfo.getID());
             PluginInfoPaneController paneController = loader.getController();
-            paneController.getPluginName().setText(current.getName());
-            paneController.getPluginStatus().setText(current.getState().toString());
-            paneController.getPluginVersion().setText(current.getVersion());
-            switch (current.getType())
+            paneController.getPluginName().setText(currentInfo.getName());
+            paneController.getPluginStatus().setText(currentInfo.getState().toString());
+            paneController.getPluginVersion().setText(currentInfo.getVersion());
+
+            switch (currentInfo.getType())
             {
                 case IO_PLUGIN:
                     paneController.getTypeIcon().setImage(new Image(getClass().getResourceAsStream(LindaleGUI.GRAPHICS_LOCATION + "ioPlugin.png")));
@@ -104,6 +127,90 @@ public class PluginManagerController implements Initializable, I_ControllerSette
             _pluginsAccordion.getPanes().add(titledPane);
 
         }
+
+        _pluginsAccordion.expandedPaneProperty().addListener(new ChangeListener<TitledPane>()
+        {
+
+            @Override
+            public void changed(ObservableValue<? extends TitledPane> observable, TitledPane oldValue, TitledPane newValue)
+            {
+                if (newValue == null)
+                {
+                    _activateDeactivateBtn.setDisable(true);
+                    _uninstallBtn.setDisable(true);
+                } else
+                {
+                    _activateDeactivateBtn.setDisable(false);
+                    _uninstallBtn.setDisable(false);
+                    Pane grid = (GridPane) ((ScrollPane) newValue.getContent()).getContent();
+                    int pluginID = _paneIDMap.get(grid);
+                    switch (_pluginInfosMap.get(pluginID).getState())
+                    {
+                        case ACTIVATED:
+                            _activateDeactivateBtn.setText("Deactivate");
+                            break;
+                        case DEACTIVATED:
+                            _activateDeactivateBtn.setText("Activate");
+                    }
+                }
+            }
+        });
+    }
+
+    @FXML
+    private void onActivateDeactivate(ActionEvent event) throws Exception
+    {
+        Pane grid = (Pane) ((ScrollPane) _pluginsAccordion.getExpandedPane().getContent()).getContent();
+        int pluginID = _paneIDMap.get(grid);
+        switch (_pluginInfosMap.get(pluginID).getState())
+        {
+            case ACTIVATED:
+                deactivatePlugin(pluginID);
+                break;
+            case DEACTIVATED:
+                activatePlugin(pluginID);
+                break;
+            default:
+                throw new Exception("Code should not be reached");
+
+        }
+    }
+
+    @FXML
+    private void onUninstall(ActionEvent event)
+    {
+        Pane grid = (Pane) ((ScrollPane) _pluginsAccordion.getExpandedPane().getContent()).getContent();
+        int pluginID = _paneIDMap.get(grid);
+        uninstallPlugin(pluginID);
+        _pluginsAccordion.getExpandedPane().setDisable(true);
+        _pluginsAccordion.getExpandedPane().setExpanded(false);
+
+    }
+
+    @FXML
+    private void onInstall(ActionEvent event)
+    {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Install Plugin");
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Java archive", "*.jar"));
+        File pluginFile = chooser.showOpenDialog(_pluginsAccordion.getScene().getWindow());
+        System.out.println("Installing plugin from" + pluginFile.getAbsolutePath());
+    }
+
+    private void deactivatePlugin(int id)
+    {
+        System.out.println("Deactivating plugin " + id);
+    }
+
+    private void activatePlugin(int id)
+    {
+        System.out.println("Activate plugin " + id);
+    }
+
+    private void uninstallPlugin(int id)
+    {
+        System.out.println("uninstalling plugin with " + id);
+        
     }
 
 }
