@@ -187,7 +187,12 @@ public class MainWindowController implements Initializable, I_ControllerSetters
     public void showSettings(ActionEvent e) throws IOException
     {
         Stage stage = new Stage(StageStyle.DECORATED);
-        stage.setScene(new Scene((Parent) FXMLLoader.load(getClass().getResource("SettingsWindow.fxml"))));
+        FXMLLoader loader = new FXMLLoader();
+        Parent parent = (Parent) loader.load(getClass().getResourceAsStream("SettingsWindow.fxml"));
+        SettingsWindowController controller = loader.getController();
+        controller.setFacade(_facade);
+        controller.setTranslator(_translator);
+        stage.setScene(new Scene(parent));
         stage.setTitle("Settings");
         stage.show();
     }
