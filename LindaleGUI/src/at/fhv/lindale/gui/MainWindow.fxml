@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane id="MainPane" prefHeight="322.0" prefWidth="621.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.MainWindowController">
+<BorderPane id="MainWindow" prefHeight="322.0" prefWidth="621.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.MainWindowController">
   <center>
     <SplitPane dividerPositions="0.2520193861066236" focusTraversable="true" prefHeight="160.0" prefWidth="200.0">
       <items>

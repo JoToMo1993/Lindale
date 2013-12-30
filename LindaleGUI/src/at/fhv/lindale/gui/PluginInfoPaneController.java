@@ -53,7 +53,6 @@ public class PluginInfoPaneController implements Initializable
     @FXML
     private Label _pluginInstallDate;
     @FXML
-    private Label _hiddenID;
     private I18n _translator;
     private I_HibernateFacade _facade;
 
@@ -197,10 +196,7 @@ public class PluginInfoPaneController implements Initializable
     /**
      * @return the _hiddenID
      */
-    public Label getHiddenID()
-    {
-        return _hiddenID;
-    }
+   
 
   
 

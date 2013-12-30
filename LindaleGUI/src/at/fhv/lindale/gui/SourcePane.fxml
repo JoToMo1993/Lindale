@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<GridPane id="_SourcePane" fx:id="_sourcePane" gridLinesVisible="false" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="188.9998779296875" prefWidth="626.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.SourcePaneController">
+  <children>
+    <Label fx:id="_userNameLabel" text="Username" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+      <labelFor>
+        <TextField fx:id="_userNameField" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+      </labelFor>
+    </Label>
+    <fx:reference source="_userNameField" />
+    <Label fx:id="_passwordLabel" text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+      <labelFor>
+        <PasswordField fx:id="_passwordField" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+      </labelFor>
+    </Label>
+    <fx:reference source="_passwordField" />
+    <Label fx:id="_pathLabel" text="Path" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+      <labelFor>
+        <TextField fx:id="_pathField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+      </labelFor>
+    </Label>
+    <fx:reference source="_pathField" />
+    <Label fx:id="_protocolLabel" text="Protocol" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+    <TextField fx:id="_protocloField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+    <Label fx:id="_rootFolderLabel" text="Root Folder" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
+    <Label fx:id="_rootFolder" text="RootFolder" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+    <Label fx:id="_nOfFilesLabel" text="Number Of Files Label" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+    <Label fx:id="_fileCount" text="10000" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+  </children>
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="0.0" percentWidth="26.3310343616523" prefWidth="99.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="0.0" percentWidth="39.63744487229627" prefWidth="116.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.0" minWidth="0.0" percentWidth="23.156108980208778" prefWidth="154.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" percentWidth="11.18050365767605" prefWidth="145.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="178.0" minHeight="10.0" percentHeight="9.382393516581919" prefHeight="50.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="104.0" minHeight="2.0" percentHeight="9.018742673586605" prefHeight="41.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="98.0" minHeight="10.0" percentHeight="8.59785826767525" prefHeight="46.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="98.0" minHeight="10.0" percentHeight="12.311941951005599" prefHeight="46.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>

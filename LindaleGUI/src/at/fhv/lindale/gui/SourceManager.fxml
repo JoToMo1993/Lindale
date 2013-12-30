@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<BorderPane id="SourceManagerPane" fx:id="_pluginManagerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="305.99993896484375" prefWidth="946.9999000000025" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.SourceManagerController">
+  <center>
+    <BorderPane prefHeight="249.0" prefWidth="719.0">
+      <center>
+        <Accordion id="_pluginsAccordion" fx:id="_sourcesAccordion" prefHeight="400.0" prefWidth="483.0">
+          <expandedPane>
+            <TitledPane id="x1" animated="false" text="untitled">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+          </expandedPane>
+        </Accordion>
+      </center>
+    </BorderPane>
+  </center>
+  <right>
+    <VBox prefHeight="399.0" prefWidth="116.0">
+      <children>
+        <Button id="_AddBtn" fx:id="_AddBtn" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAdd" prefWidth="96.9998779296875" text="Add">
+          <VBox.margin>
+            <Insets left="5.0" top="20.0" fx:id="x2" />
+          </VBox.margin>
+        </Button>
+        <Button id="_deleteBtn" fx:id="_deleteBtn" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDelete" prefWidth="97.0" text="Delete" VBox.margin="$x2" />
+        <Button id="_changeBtn" fx:id="_changeBtn" disable="true"  maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onChange" prefWidth="97.0" text="Change" VBox.margin="$x2" />
+      </children>
+    </VBox>
+  </right>
+</BorderPane>
