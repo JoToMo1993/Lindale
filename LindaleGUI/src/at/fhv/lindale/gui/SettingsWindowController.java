@@ -8,6 +8,7 @@ package at.fhv.lindale.gui;
 import at.fhv.lindale.api.hf.I_HibernateFacade;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,6 +51,7 @@ public class SettingsWindowController implements Initializable, I_ControllerSett
     private Label _pluginManagerLabel;
     private I18n _translator;
     private I_HibernateFacade _facade;
+    private Properties _config;
 
     /**
      * Initializes the controller class.
@@ -63,7 +65,14 @@ public class SettingsWindowController implements Initializable, I_ControllerSett
     @FXML
     private void onGeneralSelected(MouseEvent event) throws IOException
     {
-        GridPane generalSettings = FXMLLoader.load(getClass().getResource("GeneralSettings.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        
+        GridPane generalSettings = (GridPane) loader.load(getClass().getResourceAsStream("GeneralSettings.fxml"));
+        GeneralSettingsController controller = loader.getController();
+        controller.setConfigProperty(_config);
+        controller.setFacade(_facade);
+        controller.setTranslator(_translator);
+        controller.syncWithConfig();
         _currentSettingsPane.setContent(generalSettings);
     }
 
@@ -119,6 +128,12 @@ public class SettingsWindowController implements Initializable, I_ControllerSett
     public void setFacade(I_HibernateFacade facede)
     {
         _facade = facede;
+    }
+
+    @Override
+    public void setConfigProperty(Properties config)
+    {
+        _config = config;
     }
 
 }

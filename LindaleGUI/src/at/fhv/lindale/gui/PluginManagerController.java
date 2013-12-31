@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Properties;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -61,6 +62,7 @@ public class PluginManagerController implements Initializable, I_ControllerSette
     private Button _installBtn;
     private HashMap<Integer, I_PluginInfo> _pluginInfosMap = new HashMap<>();
     private HashMap<Pane, Integer> _paneIDMap = new HashMap<>();
+    private Properties _config;
 
     /**
      * Initializes the controller class.
@@ -211,6 +213,12 @@ public class PluginManagerController implements Initializable, I_ControllerSette
     {
         System.out.println("uninstalling plugin with " + id);
         
+    }
+
+    @Override
+    public void setConfigProperty(Properties config)
+    {
+        _config = config;
     }
 
 }

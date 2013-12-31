@@ -5,13 +5,24 @@
  */
 package at.fhv.lindale.gui;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  *
@@ -19,17 +30,19 @@ import javafx.stage.Stage;
  */
 public class LindaleGUI extends Application
 {
-    
-        public static final String GRAPHICS_LOCATION = "/at/fhv/lindale/gui/graphics/";
+
+    public static final String GRAPHICS_LOCATION = "/at/fhv/lindale/gui/graphics/";
+    public static final String CONIFG_LOCATION = "config.properties";
+    private Properties _config;
 
     @Override
     public void start(Stage stage) throws Exception
     {
+        _config = loadConfig(new File(CONIFG_LOCATION));
         //http://stackoverflow.com/questions/10751271/accessing-fxml-controller-class
         FXMLLoader loader = new FXMLLoader();
         Parent root = (Parent) loader.load(getClass().getResourceAsStream("MainWindow.fxml"));
         MainWindowController mainController = (MainWindowController) loader.getController();
-//        Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
         //For Testing
         HashMap<String, ArrayList<String>> pluginMap = new HashMap();
         ArrayList<String> musicPlugin = new ArrayList<>();
@@ -43,11 +56,28 @@ public class LindaleGUI extends Application
         pluginMap.put("Movies", moviePlugin);
         mainController.addPlugins(pluginMap);
         mainController.setFacade(new FakeFacade());
+        //Test ends here do NOT delete the code below
+        mainController.setConfigProperty(_config);
 
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
         stage.setTitle("Lindale");
+        stage.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>()
+        {
+
+            @Override
+            public void handle(WindowEvent t)
+            {
+                try
+                {
+                    _config.store(new FileOutputStream(new File(CONIFG_LOCATION)), null);
+                } catch (IOException ex)
+                {
+                    Logger.getLogger(LindaleGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
         stage.show();
     }
 
@@ -60,6 +90,30 @@ public class LindaleGUI extends Application
     public static void main(String[] args)
     {
         launch(args);
+    }
+
+    private Properties loadConfig(File file) throws IOException
+    {
+        if (!file.exists())
+        {
+            file.createNewFile();
+            Properties config = new Properties();
+            config.setProperty("languages.available", "en_us,de_de,bg_bg,fr_fr,es_es");
+            config.setProperty("languages.enabled", "en_us");
+            config.setProperty("advanced.enabled", "false");
+            config.setProperty("advanced.copy", "false");
+            config.setProperty("advanced.rename", "false");
+            config.setProperty("advanced.move", "false");
+            config.setProperty("advanced.delete", "false");
+            config.store(new FileOutputStream(file), "Lindale Configuration");
+            return config;
+        } else
+        {
+            Properties config = new Properties();
+            config.load(new FileInputStream(file));
+            return config;
+        }
+
     }
 
 }

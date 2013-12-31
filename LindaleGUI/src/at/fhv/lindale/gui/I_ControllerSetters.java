@@ -6,6 +6,7 @@
 package at.fhv.lindale.gui;
 
 import at.fhv.lindale.api.hf.I_HibernateFacade;
+import java.util.Properties;
 import org.xnap.commons.i18n.I18n;
 
 /**
@@ -20,5 +21,7 @@ public interface I_ControllerSetters
     public void setTranslator(I18n translator);
 
     public void setFacade(I_HibernateFacade facede);
+    
+    public void setConfigProperty (Properties config);
 
 }

@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
@@ -67,6 +68,7 @@ public class MainWindowController implements Initializable, I_ControllerSetters
 
     //Used for creating mouse events see addPlugins
     private int _pluginIndex = 0;
+    private Properties _config;
 
     @Override
     public void initialize(URL url, ResourceBundle rb)
@@ -187,11 +189,13 @@ public class MainWindowController implements Initializable, I_ControllerSetters
     public void showSettings(ActionEvent e) throws IOException
     {
         Stage stage = new Stage(StageStyle.DECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader();
         Parent parent = (Parent) loader.load(getClass().getResourceAsStream("SettingsWindow.fxml"));
         SettingsWindowController controller = loader.getController();
         controller.setFacade(_facade);
         controller.setTranslator(_translator);
+        controller.setConfigProperty(_config);
         stage.setScene(new Scene(parent));
         stage.setTitle("Settings");
         stage.show();
@@ -216,6 +220,12 @@ public class MainWindowController implements Initializable, I_ControllerSetters
     @FXML
     public void showSourceManager(ActionEvent e)
     {
+    }
+
+    @Override
+    public void setConfigProperty(Properties config)
+    {
+        _config = config;
     }
 
 }
