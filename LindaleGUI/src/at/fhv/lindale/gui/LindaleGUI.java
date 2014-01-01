@@ -71,7 +71,13 @@ public class LindaleGUI extends Application
             {
                 try
                 {
-                    _config.store(new FileOutputStream(new File(CONIFG_LOCATION)), null);
+                    File configFile = new File(CONIFG_LOCATION);
+                    if (!configFile.exists())
+                    {
+                        configFile.mkdirs();
+                        configFile.createNewFile();
+                    }
+                    _config.store(new FileOutputStream(configFile), null);
                 } catch (IOException ex)
                 {
                     Logger.getLogger(LindaleGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,22 +100,24 @@ public class LindaleGUI extends Application
 
     private Properties loadConfig(File file) throws IOException
     {
+        Properties defaults = new Properties();
+        defaults.setProperty("languages.available", "en_us,de_de,bg_bg,fr_fr,es_es");
+        defaults.setProperty("languages.enabled", "en_us");
+        defaults.setProperty("advanced.enabled", "false");
+        defaults.setProperty("advanced.copy", "false");
+        defaults.setProperty("advanced.rename", "false");
+        defaults.setProperty("advanced.move", "false");
+        defaults.setProperty("advanced.delete", "false");
+        defaults.setProperty("player.name", "");
+        defaults.setProperty("player.command", "");
+
         if (!file.exists())
         {
-            file.createNewFile();
-            Properties config = new Properties();
-            config.setProperty("languages.available", "en_us,de_de,bg_bg,fr_fr,es_es");
-            config.setProperty("languages.enabled", "en_us");
-            config.setProperty("advanced.enabled", "false");
-            config.setProperty("advanced.copy", "false");
-            config.setProperty("advanced.rename", "false");
-            config.setProperty("advanced.move", "false");
-            config.setProperty("advanced.delete", "false");
-            config.store(new FileOutputStream(file), "Lindale Configuration");
+            Properties config = new Properties(defaults);
             return config;
         } else
         {
-            Properties config = new Properties();
+            Properties config = new Properties(defaults);
             config.load(new FileInputStream(file));
             return config;
         }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane id="GridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.AdvancedSettingsController">
+  <children>
+    <VBox fx:id="_checkBoxes" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+      <children>
+        <CheckBox fx:id="_copyCheckBox" mnemonicParsing="false" text="Copy" />
+        <CheckBox fx:id="_renameCheckBox" mnemonicParsing="false" text="Rename" />
+        <CheckBox fx:id="_moveCheckBox" mnemonicParsing="false" text="Move" />
+        <CheckBox fx:id="_deleteCheckBox" mnemonicParsing="false" text="Delete" />
+      </children>
+      <padding>
+        <Insets left="20.0" />
+      </padding>
+    </VBox>
+    <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+      <children>
+        <TextField fx:id="_playerNameField" prefWidth="200.0" promptText="Player Name">
+          <HBox.margin>
+            <Insets top="50.0" fx:id="x1" />
+          </HBox.margin>
+        </TextField>
+        <TextField id="_" fx:id="_commandField" prefWidth="200.0" promptText="Command" HBox.margin="$x1" />
+      </children>
+    </HBox>
+    <Button fx:id="_okButton" mnemonicParsing="false" onAction="#onOk" text="OK" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+    <Label fx:id="_fileOperationsLabel" text="File Operations" GridPane.columnIndex="0" GridPane.rowIndex="0">
+      <GridPane.margin>
+        <Insets left="20.0" />
+      </GridPane.margin>
+    </Label>
+    <Label fx:id="_customPlayerLabel" text="Custom Player" GridPane.columnIndex="0" GridPane.rowIndex="2">
+      <GridPane.margin>
+        <Insets left="20.0" />
+      </GridPane.margin>
+    </Label>
+  </children>
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" percentHeight="15.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" percentHeight="35.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" percentHeight="15.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" percentHeight="35.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" percentHeight="10.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>

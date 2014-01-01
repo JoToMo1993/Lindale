@@ -7,6 +7,7 @@ package at.fhv.lindale.gui;
 
 import at.fhv.lindale.api.hf.I_HibernateFacade;
 import at.fhv.lindale.gui.utils.DialogUtils;
+import at.fhv.lindale.gui.utils.E_DialogTypes;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ import org.xnap.commons.i18n.I18n;
  *
  * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  */
-public class GeneralSettingsController implements Initializable, I_ControllerSetters
+public class GeneralSettingsController implements Initializable, I_ControllerSetters, I_Synchronizable
 {
 
     @FXML
@@ -71,7 +72,7 @@ public class GeneralSettingsController implements Initializable, I_ControllerSet
         {
             _config.setProperty("languages.enabled", _languagesBox.getSelectionModel().getSelectedItem().toString());
             DialogUtils utils = new DialogUtils();
-            utils.showDialogSuccess("Language changed", "Language changed successfully. Restert to apply the changes", "OK");
+            utils.showDialog(E_DialogTypes.SUCCESS,"Language changed", "Language changed successfully. Restert to apply the changes", "OK");
         }
 
     }
@@ -97,7 +98,7 @@ public class GeneralSettingsController implements Initializable, I_ControllerSet
     //Sets buttons and language according to config
     public void syncWithConfig()
     {
-        if ("true".equals(_config.getProperty("advanced.enabled")))
+        if ("true".equalsIgnoreCase(_config.getProperty("advanced.enabled")))
         {
             _advancedModeButton.setSelected(true);
 

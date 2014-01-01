@@ -100,9 +100,17 @@ public class SettingsWindowController implements Initializable, I_ControllerSett
         System.out.println("search settings");
     }
 
+    @FXML
     private void onAdvancedSelected(MouseEvent event) throws IOException
     {
-        System.out.println("advanced");
+        FXMLLoader loader = new FXMLLoader();
+        Pane pane = (Pane) loader.load(getClass().getResourceAsStream("AdvancedSettings.fxml"));
+        AdvancedSettingsController controller = loader.getController();
+        controller.setConfigProperty(_config);
+        controller.setFacade(_facade);
+        controller.setTranslator(_translator);
+        controller.syncWithConfig();
+        _currentSettingsPane.setContent(pane);
     }
     
     @FXML
