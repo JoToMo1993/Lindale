@@ -13,6 +13,8 @@ package at.fhv.lindale.gui.utils;
  * @date    01-Jan-2014
  */
 public enum E_DialogTypes {
+    
+    //*simple change for git*/
     SUCCESS,
     ERROR,
     FATAL_ERROR;
