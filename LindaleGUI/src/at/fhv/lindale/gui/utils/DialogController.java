@@ -21,15 +21,15 @@ import javafx.scene.text.Text;
  *
  * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  */
-public class DialogSuccessController implements Initializable
+public class DialogController implements Initializable
 {
 
     @FXML
     private Text _msgText;
     @FXML
-    private ImageView _successImage;
+    private ImageView _img;
     @FXML
-    private Button _okBtn;
+    private Button _btn;
 
     /**
      * Initializes the controller class.
@@ -46,17 +46,18 @@ public class DialogSuccessController implements Initializable
 
     public void setBtnText(String text)
     {
-        _okBtn.setText(text);
+        _btn.setText(text);
     }
 
-    public void loadImg()
+    public void setImg(Image image)
     {
-        _successImage.setImage(new Image(getClass().getResourceAsStream(LindaleGUI.GRAPHICS_LOCATION + "success.png")));
+        _img.setImage(image);
+
     }
 
-    @FXML
-    private void onOK(ActionEvent e)
+    public Button getButton()
     {
-        _okBtn.getScene().getWindow().hide();
+        return _btn;
     }
+
 }
