@@ -7,6 +7,7 @@
 package at.fhv.lindale.impl.domain;
 
 import at.fhv.lindale.api.container.I_AbstractCollection;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -27,7 +28,7 @@ import javax.persistence.Table;
 @Inheritance(strategy=SINGLE_TABLE)
 @DiscriminatorColumn(name="CTYPE")
 @Table(name="COLLECTION")
-public abstract class A_Collection implements I_AbstractCollection
+public abstract class A_Collection implements I_AbstractCollection, Serializable
 {
     @ManyToMany
     private List<Collection> collections;

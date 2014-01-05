@@ -9,6 +9,7 @@ package at.fhv.lindale.impl.domain;
 import at.fhv.lindale.api.container.E_PluginState;
 import at.fhv.lindale.api.container.E_PluginTypes;
 import at.fhv.lindale.api.container.I_PluginInfo;
+import java.io.Serializable;
 import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +27,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name="PLUGIN")
-public class PluginInfo implements I_PluginInfo
+public class PluginInfo implements I_PluginInfo, Serializable
 {
     @Column(name = "PID")
     @Id

@@ -3,3 +3,9 @@
 /Lindale_API_Container/build/
 /Lindale_Domain/build/
 /Lindale_API_Hibernate/build/
+/LindaleGUI/build/
+/Lindale_API_Container/dist
+/Lindale_API_Hibernate/dist/
+/Lindale_Domain/dist/
+/LindaleGUI/dist/
+/Lindale_PluginManager/nbproject/private/
