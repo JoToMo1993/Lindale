@@ -14,7 +14,7 @@ import at.fhv.lindale.api.container.I_File;
  * @project Lindale_Plugin_API
  * @date    16.12.2013
  */
-public interface I_Plugin_IO
+public interface I_Plugin_IO extends I_Plugin
 {
     public I_File fillMetaTags(I_File file);
 }

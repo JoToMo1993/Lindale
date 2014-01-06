@@ -15,7 +15,7 @@ import java.util.List;
  * @project Lindale_Plugin_API
  * @date    16.12.2013
  */
-public interface I_Plugin_Filter
+public interface I_Plugin_Filter extends I_Plugin
 {
     public List<I_File> filter(List<I_File> files);
 }

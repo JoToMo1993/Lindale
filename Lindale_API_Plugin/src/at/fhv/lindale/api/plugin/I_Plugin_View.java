@@ -14,7 +14,7 @@ import javafx.scene.layout.Pane;
  * @project Lindale_Plugin_API
  * @date    16.12.2013
  */
-public interface I_Plugin_View
+public interface I_Plugin_View extends I_Plugin
 {
     public Pane getView(int ID);
     public void search (int ID, String searchText);

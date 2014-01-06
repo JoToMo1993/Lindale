@@ -6,6 +6,7 @@
 
 package at.fhv.lindale.api.plugin;
 
+import at.fhv.lindale.api.container.I_PluginInfo;
 import at.fhv.lindale.api.plugin.utils.I_PluginManager;
 import java.util.List;
 
@@ -20,4 +21,5 @@ public interface I_Plugin
     public void           setup();
     public void           ativate(I_PluginManager pm);
     public List<I_Plugin> getDependencies();
+    public I_PluginInfo   getPluginInfo();
 }
