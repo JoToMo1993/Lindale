@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane id="MainWindow" prefHeight="356.0" prefWidth="884.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.fhv.lindale.gui.MainWindowController">
+  <center>
+    <BorderPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+      <center>
+        <SplitPane dividerPositions="0.46296296296296297" focusTraversable="true" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+          <items>
+            <BorderPane fx:id="_viewPluginPane" prefHeight="200.0" prefWidth="200.0" />
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+              <center>
+                <ScrollPane fx:id="_errorScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+                  <content>
+                    <ListView fx:id="_errorListView" prefHeight="200.0" prefWidth="200.0" />
+                  </content>
+                </ScrollPane>
+              </center>
+            </BorderPane>
+          </items>
+        </SplitPane>
+      </center>
+    </BorderPane>
+  </center>
+  <left>
+    <ScrollPane fx:id="_pluginsScrollPane" fitToWidth="true" minHeight="0.0" minWidth="0.0" prefHeight="296.0" prefWidth="173.0">
+      <content>
+        <Accordion fx:id="_pluginsAccordion" minWidth="152.0" prefWidth="152.0" />
+      </content>
+    </ScrollPane>
+  </left>
+  <top>
+    <GridPane style="-fx-background-color: black;&#10;">
+      <children>
+        <MenuBar id="_menuBar" prefHeight="30.0" prefWidth="207.0" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
+          <menus>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
+                <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                  <content>
+                    <CheckBox styleClass="menu-item, custom-menu-item, menu-item, custom-menu-item" text="Click Me" />
+                  </content>
+                </CustomMenuItem>
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#newCollection" text="New Collection" />
+                <MenuItem mnemonicParsing="false" onAction="#addMode" text="Add Mode" />
+                <MenuItem mnemonicParsing="false" onAction="#deleteCollection" text="Delete Collection" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Tools">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#showSettings" text="Settings" />
+                <MenuItem mnemonicParsing="false" onAction="#showPluginManager" text="Plugin Manager" />
+                <MenuItem mnemonicParsing="false" onAction="#showSourceManager" text="Source Manager" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#showHelp" text="Help" />
+                <MenuItem mnemonicParsing="false" onAction="#showAbout" text="About" />
+              </items>
+            </Menu>
+          </menus>
+        </MenuBar>
+        <MenuBar prefHeight="30.0" prefWidth="145.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
+          <menus>
+            <Menu mnemonicParsing="false" text="Search Criteria">
+              <items>
+                <CheckMenuItem mnemonicParsing="false" text="Artist" />
+                <CheckMenuItem mnemonicParsing="false" text="Genre" />
+              </items>
+            </Menu>
+          </menus>
+        </MenuBar>
+        <TextField prefWidth="185.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Button mnemonicParsing="false" prefWidth="86.0" style="-fx-background-color: grey;&#10;-fx-font-color: #FFFFFF;&#10;" text="Button" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="207.0" minWidth="10.0" percentWidth="45.0" prefWidth="207.0" />
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="206.0" minWidth="10.0" percentWidth="15.0" prefWidth="122.0" />
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="292.0" minWidth="10.0" percentWidth="30.0" prefWidth="292.0" />
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="292.0" minWidth="10.0" percentWidth="10.0" prefWidth="292.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </top>
+</BorderPane>
