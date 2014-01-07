@@ -30,9 +30,9 @@
     <Label fx:id="_protocolLabel" text="Protocol" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
     <TextField fx:id="_protocloField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
     <Label fx:id="_rootFolderLabel" text="Root Folder" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
-    <Label fx:id="_rootFolder" text="RootFolder" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+    <Label fx:id="_rootFolder" text="_RootFolder" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
     <Label fx:id="_nOfFilesLabel" text="Number Of Files Label" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-    <Label fx:id="_fileCount" text="10000" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+    <Label fx:id="_fileCount" text="_10000" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="TOP" />
   </children>
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="0.0" percentWidth="26.3310343616523" prefWidth="99.0" />

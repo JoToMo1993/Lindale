@@ -42,11 +42,6 @@
             <Menu mnemonicParsing="false" text="File">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
-                <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
-                  <content>
-                    <CheckBox styleClass="menu-item, custom-menu-item, menu-item, custom-menu-item" text="Click Me" />
-                  </content>
-                </CustomMenuItem>
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
