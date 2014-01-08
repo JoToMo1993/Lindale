@@ -41,7 +41,7 @@ public class LindaleGUI extends Application
         _config = loadConfig(new File(CONIFG_LOCATION));
         //http://stackoverflow.com/questions/10751271/accessing-fxml-controller-class
         FXMLLoader loader = new FXMLLoader();
-        Parent root = (Parent) loader.load(getClass().getResourceAsStream("MainWindow_1.fxml"));
+        Parent root = (Parent) loader.load(getClass().getResourceAsStream("MainWindow.fxml"));
         MainWindowController mainController = (MainWindowController) loader.getController();
         //For Testing
         HashMap<String, ArrayList<String>> pluginMap = new HashMap();
