@@ -5,7 +5,9 @@
  */
 package at.fhv.lindale.gui;
 
+import at.fhv.lindale.api.hf.I_HibernateFacade;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.xnap.commons.i18n.I18n;
 
 /**
  * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
@@ -22,7 +25,7 @@ import javafx.stage.Stage;
  * @project LindaleGUI
  * @date 21-Dec-2013
  */
-public class NewCollectionController implements Initializable
+public class NewCollectionController implements Initializable, I_ControllerSetters, I_Translateable
 {
 
     @FXML
@@ -37,6 +40,11 @@ public class NewCollectionController implements Initializable
     private Button _okButton;
     @FXML
     private Label _erorrLabel;
+    private I18n _translator;
+    private I_HibernateFacade _facade;
+    private Properties _config;
+    @FXML
+    private Label _dialogTitle;
 
     @Override
     public void initialize(URL url, ResourceBundle rb)
@@ -69,6 +77,33 @@ public class NewCollectionController implements Initializable
     {
         Stage stage = (Stage) _cencelButton.getScene().getWindow();
         stage.close();
+    }
+
+    @Override
+    public void setTranslator(I18n translator)
+    {
+        _translator = translator;
+    }
+
+    @Override
+    public void setFacade(I_HibernateFacade facade)
+    {
+        _facade = facade;
+    }
+
+    @Override
+    public void setConfigProperty(Properties config)
+    {
+        _config = config;
+    }
+
+    @Override
+    public void translateGUI()
+    {
+        _fieldLabel.setText(_translator.tr(_fieldLabel.getText()));
+        _cencelButton.setText(_translator.tr(_cencelButton.getText()));
+        _okButton.setText(_translator.tr(_okButton.getText()));
+        _dialogTitle.setText(_translator.tr(_dialogTitle.getText()));
     }
 
 }

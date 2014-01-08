@@ -32,7 +32,7 @@ import org.xnap.commons.i18n.I18n;
  *
  * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  */
-public class AdvancedSettingsController implements Initializable, I_Synchronizable, I_ControllerSetters
+public class AdvancedSettingsController implements Initializable, I_Synchronizable, I_ControllerSetters, I_Translateable
 {
 
     @FXML
@@ -190,6 +190,19 @@ public class AdvancedSettingsController implements Initializable, I_Synchronizab
     )
     {
         _config = config;
+    }
+
+    @Override
+    public void translateGUI()
+    {
+        _copyCheckBox.setText(_translator.tr(_copyCheckBox.getText()));
+        _renameCheckBox.setText(_translator.tr(_copyCheckBox.getText()));
+        _moveCheckBox.setText(_translator.tr(_moveCheckBox.getText()));
+        _deleteCheckBox.setText(_translator.tr(_deleteCheckBox.getText()));
+        _fileOperationsLabel.setText(_translator.tr(_fileOperationsLabel.getText()));
+        _playerNameField.setPromptText(_translator.tr(_playerNameField.getText()));
+        _commandField.setPromptText(_translator.tr(_commandField.getPromptText()));
+        _okButton.setText(_translator.tr(_okButton.getText()));
     }
 
 }

@@ -35,7 +35,7 @@
       </children>
     </HBox>
     <Button fx:id="_okButton" mnemonicParsing="false" onMouseClicked="#okClicked" text="OK" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-    <Label text="General Settings" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0">
+    <Label fx:id="_titleLabel" text="General Settings" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0">
       <font>
         <Font name="System Bold" size="24.0" />
       </font>

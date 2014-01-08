@@ -28,7 +28,7 @@ import org.xnap.commons.i18n.I18n;
  *
  * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  */
-public class SettingsWindowController implements Initializable, I_ControllerSetters
+public class SettingsWindowController implements Initializable, I_ControllerSetters, I_Translateable
 {
 
     @FXML
@@ -142,6 +142,18 @@ public class SettingsWindowController implements Initializable, I_ControllerSett
     public void setConfigProperty(Properties config)
     {
         _config = config;
+    }
+
+    @Override
+    public void translateGUI()
+    {
+        _generalLabel.setText(_translator.tr(_generalLabel.getText()));
+        _advancedLabel.setText(_translator.tr(_advancedLabel.getText()));
+        _playerSettingsLabel.setText(_translator.tr(_playerSettingsLabel.getText()));
+        _pluginManagerLabel.setText(_translator.tr(_pluginManagerLabel.getText()));
+        _searchSettingsLabel.setText(_translator.tr(_searchSettingsLabel.getText()));
+        _shortcutsLabel.setText(_translator.tr(_shortcutsLabel.getText()));
+        _sourceManagerLabel.setText(_translator.tr(_sourceManagerLabel.getText()));
     }
 
 }

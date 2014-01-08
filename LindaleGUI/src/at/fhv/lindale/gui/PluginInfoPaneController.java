@@ -7,6 +7,7 @@ package at.fhv.lindale.gui;
 
 import at.fhv.lindale.api.hf.I_HibernateFacade;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +22,7 @@ import org.xnap.commons.i18n.I18n;
  *
  * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  */
-public class PluginInfoPaneController implements Initializable
+public class PluginInfoPaneController implements Initializable, I_Translateable, I_ControllerSetters
 {
 
     @FXML
@@ -55,6 +56,7 @@ public class PluginInfoPaneController implements Initializable
     @FXML
     private I18n _translator;
     private I_HibernateFacade _facade;
+    private Properties _config;
 
     /**
      * Initializes the controller class.
@@ -193,10 +195,35 @@ public class PluginInfoPaneController implements Initializable
         return _facade;
     }
 
-    /**
-     * @return the _hiddenID
-     */
-   
+    @Override
+    public void translateGUI()
+    {
+        _authorLabel.setText(_translator.tr(_authorLabel.getText()));
+        _installDateLabel.setText(_translator.tr(_installDateLabel.getText()));
+        _nameLabel.setText(_translator.tr(_nameLabel.getText()));
+        _statusLabel.setText(_translator.tr(_statusLabel.getText()));
+        _versionLabel.setText(_translator.tr(_versionLabel.getText()));
+        _websiteLabel.setText(_translator.tr(_websiteLabel.getText()));
+    }
+
+    @Override
+    public void setTranslator(I18n translator)
+    {
+        _translator = _translator;
+    }
+
+    @Override
+    public void setFacade(I_HibernateFacade facade)
+    {
+        _facade = facade;
+    }
+
+    @Override
+    public void setConfigProperty(Properties config)
+    {
+        _config = config;
+    }
+
 
   
 

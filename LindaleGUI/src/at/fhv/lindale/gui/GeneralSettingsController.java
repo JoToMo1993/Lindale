@@ -19,6 +19,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -33,7 +34,7 @@ import org.xnap.commons.i18n.I18n;
  *
  * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  */
-public class GeneralSettingsController implements Initializable, I_ControllerSetters, I_Synchronizable
+public class GeneralSettingsController implements Initializable, I_ControllerSetters, I_Synchronizable, I_Translateable
 {
 
     @FXML
@@ -49,6 +50,10 @@ public class GeneralSettingsController implements Initializable, I_ControllerSet
     private I18n _translator;
     private Properties _config;
     private Locale _currentLocale;
+    @FXML
+    private Insets x1;
+    @FXML
+    private Label _titleLabel;
 
     /**
      * Initializes the controller class.
@@ -59,6 +64,7 @@ public class GeneralSettingsController implements Initializable, I_ControllerSet
         // TODO
     }
 
+    @FXML
     public void okClicked(MouseEvent e) throws IOException
     {
         if (_advancedModeButton.isSelected())
@@ -123,6 +129,15 @@ public class GeneralSettingsController implements Initializable, I_ControllerSet
             model.select(localeIndex);
         }
 
+    }
+
+    @Override
+    public void translateGUI()
+    {
+        _languageLabel.setText(_translator.tr(_languageLabel.getText()));
+        _advancedModeButton.setText(_translator.tr(_advancedModeButton.getText()));
+        _okButton.setText(_translator.tr(_okButton.getText()));
+        _titleLabel.setText(_translator.tr(_titleLabel.getText()));
     }
 
 }

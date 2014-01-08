@@ -20,8 +20,10 @@ public interface I_ControllerSetters
 
     public void setTranslator(I18n translator);
 
-    public void setFacade(I_HibernateFacade facede);
+    public void setFacade(I_HibernateFacade facade);
     
     public void setConfigProperty (Properties config);
+    
+ 
 
 }

@@ -36,7 +36,7 @@
     </GridPane>
   </bottom>
   <top>
-    <Label text="New Collection" BorderPane.alignment="TOP_CENTER">
+    <Label fx:id="_dialogTitle" text="New Collection" BorderPane.alignment="TOP_CENTER">
       <font>
         <Font name="System Bold" size="32.0" />
       </font>

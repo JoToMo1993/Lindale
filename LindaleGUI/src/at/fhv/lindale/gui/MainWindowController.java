@@ -26,6 +26,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
@@ -46,10 +47,9 @@ import org.xnap.commons.i18n.I18n;
  *
  * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  */
-public class MainWindowController implements Initializable, I_ControllerSetters
+public class MainWindowController implements Initializable, I_ControllerSetters, I_Translateable
 {
 
-    @FXML
     private MenuBar _menuBar;
     @FXML
     private ScrollPane _pluginsScrollPane;
@@ -69,6 +69,10 @@ public class MainWindowController implements Initializable, I_ControllerSetters
     //Used for creating mouse events see addPlugins
     private int _pluginIndex = 0;
     private Properties _config;
+    @FXML
+    private MenuBar _searchCriterias;
+    @FXML
+    private Button _goButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb)
@@ -122,17 +126,17 @@ public class MainWindowController implements Initializable, I_ControllerSetters
         if (_translator == null)
         {
             _translator = translator;
-            translateGui();
         }
 
     }
 
-    public void setFacade (I_HibernateFacade facede)
+    public void setFacade(I_HibernateFacade facede)
     {
         _facade = facede;
     }
 
-    private void translateGui()
+    @Override
+    public void translateGUI()
     {
         ObservableList<Menu> menus = _menuBar.getMenus();
         for (Menu currentMenu : menus)
@@ -142,6 +146,15 @@ public class MainWindowController implements Initializable, I_ControllerSetters
             for (MenuItem currentItem : items)
             {
                 currentItem.setText(_translator.tr(currentItem.getText()));
+            }
+        }
+        ObservableList<Menu> criterias = _searchCriterias.getMenus();
+        for (Menu menu : criterias)
+        {
+            ObservableList<MenuItem> items = menu.getItems();
+            for (MenuItem item : items)
+            {
+                item.setText(_translator.tr(item.getText()));
             }
         }
     }
@@ -207,7 +220,7 @@ public class MainWindowController implements Initializable, I_ControllerSetters
         Stage stage = new Stage(StageStyle.DECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader();
-        Parent parent = (Parent)loader.load(getClass().getResourceAsStream("PluginManager.fxml"));
+        Parent parent = (Parent) loader.load(getClass().getResourceAsStream("PluginManager.fxml"));
         stage.setScene(new Scene(parent));
         PluginManagerController pluginManagerController = loader.getController();
         pluginManagerController.setFacade(_facade);

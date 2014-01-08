@@ -43,7 +43,7 @@ import javafx.stage.FileChooser;
  *
  * @author Georgi Georgiev <georgi.georgiev@students.fhv.at>
  */
-public class PluginManagerController implements Initializable, I_ControllerSetters
+public class PluginManagerController implements Initializable, I_ControllerSetters, I_Translateable
 {
 
     @FXML
@@ -219,6 +219,14 @@ public class PluginManagerController implements Initializable, I_ControllerSette
     public void setConfigProperty(Properties config)
     {
         _config = config;
+    }
+
+    @Override
+    public void translateGUI()
+    {
+        _installBtn.setText(_translator.tr(_installBtn.getText()));
+        _uninstallBtn.setText(_translator.tr(_uninstallBtn.getText()));
+        _activateDeactivateBtn.setText(_translator.tr(_activateDeactivateBtn.getText()));
     }
 
 }
