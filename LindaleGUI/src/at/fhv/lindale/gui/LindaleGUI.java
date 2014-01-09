@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 /**
  *
@@ -33,16 +36,23 @@ public class LindaleGUI extends Application
 
     public static final String GRAPHICS_LOCATION = "/at/fhv/lindale/gui/graphics/";
     public static final String CONIFG_LOCATION = "config.properties";
+    public static final String MESSAGES = "app.i18n.Messages";
     private Properties _config;
 
     @Override
     public void start(Stage stage) throws Exception
     {
         _config = loadConfig(new File(CONIFG_LOCATION));
+        String[] localeString = _config.getProperty("languages.enabled").split("_");
+//        I18n translator = I18nFactory.getI18n(getClass(), MESSAGES, new Locale(localeString[0], localeString[1]));
+        I18n translator = I18nFactory.getI18n(getClass(), MESSAGES, new Locale("bg", "bg"));
         //http://stackoverflow.com/questions/10751271/accessing-fxml-controller-class
         FXMLLoader loader = new FXMLLoader();
         Parent root = (Parent) loader.load(getClass().getResourceAsStream("MainWindow.fxml"));
-        MainWindowController mainController = (MainWindowController) loader.getController();
+        MainWindowController mainController = loader.getController();
+        mainController.setTranslator(translator);
+        mainController.setConfigProperty(_config);
+        mainController.translateGUI();
         //For Testing
         HashMap<String, ArrayList<String>> pluginMap = new HashMap();
         ArrayList<String> musicPlugin = new ArrayList<>();
@@ -57,12 +67,9 @@ public class LindaleGUI extends Application
         mainController.addPlugins(pluginMap);
         mainController.setFacade(new FakeFacade());
         //Test ends here do NOT delete the code below
-        mainController.setConfigProperty(_config);
-
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
+        stage.setScene(new Scene(root));
         stage.setTitle("Lindale");
+
         stage.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>()
         {
 
@@ -74,7 +81,7 @@ public class LindaleGUI extends Application
                     File configFile = new File(CONIFG_LOCATION);
                     if (!configFile.exists())
                     {
-                        configFile.mkdirs();
+
                         configFile.createNewFile();
                     }
                     _config.store(new FileOutputStream(configFile), null);

@@ -101,6 +101,8 @@ public class PluginManagerController implements Initializable, I_ControllerSette
             paneController.getPluginName().setText(currentInfo.getName());
             paneController.getPluginStatus().setText(currentInfo.getState().toString());
             paneController.getPluginVersion().setText(currentInfo.getVersion());
+            paneController.setTranslator(_translator);
+            paneController.translateGUI();
 
             switch (currentInfo.getType())
             {
@@ -149,10 +151,10 @@ public class PluginManagerController implements Initializable, I_ControllerSette
                     switch (_pluginInfosMap.get(pluginID).getState())
                     {
                         case ACTIVATED:
-                            _activateDeactivateBtn.setText("Deactivate");
+                            _activateDeactivateBtn.setText(_translator.tr("Deactivate"));
                             break;
                         case DEACTIVATED:
-                            _activateDeactivateBtn.setText("Activate");
+                            _activateDeactivateBtn.setText(_translator.tr("Activate"));
                     }
                 }
             }

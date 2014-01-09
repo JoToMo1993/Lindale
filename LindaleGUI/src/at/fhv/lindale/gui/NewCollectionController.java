@@ -104,6 +104,7 @@ public class NewCollectionController implements Initializable, I_ControllerSette
         _cencelButton.setText(_translator.tr(_cencelButton.getText()));
         _okButton.setText(_translator.tr(_okButton.getText()));
         _dialogTitle.setText(_translator.tr(_dialogTitle.getText()));
+        _erorrLabel.setText(_translator.tr(_erorrLabel.getText()));
     }
 
 }

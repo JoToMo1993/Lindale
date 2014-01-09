@@ -77,8 +77,8 @@ public class GeneralSettingsController implements Initializable, I_ControllerSet
         if (!_currentLocale.equals(_languagesBox.getSelectionModel().getSelectedItem()))
         {
             _config.setProperty("languages.enabled", _languagesBox.getSelectionModel().getSelectedItem().toString());
-            DialogUtils utils = new DialogUtils();
-            utils.showDialog(E_DialogTypes.SUCCESS,"Language changed", "Language changed successfully. Restert to apply the changes", "OK");
+//            DialogUtils utils = new DialogUtils();
+//            utils.showDialog(E_DialogTypes.SUCCESS,"Language changed", "Language changed successfully. Restert to apply the changes", "OK");
         }
 
     }

@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
@@ -18,6 +19,9 @@
           <labelFor>
             <TextField fx:id="_nameInputField" onAction="#okClicked" prefWidth="200.0" promptText="" GridPane.columnIndex="1" GridPane.rowIndex="0" />
           </labelFor>
+          <GridPane.margin>
+            <Insets left="10.0" />
+          </GridPane.margin>
         </Label>
         <fx:reference source="_nameInputField" />
         <Button fx:id="_cencelButton" alignment="CENTER" mnemonicParsing="false" onAction="#cencelClicked" text="Cencel" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />

@@ -209,7 +209,7 @@ public class PluginInfoPaneController implements Initializable, I_Translateable,
     @Override
     public void setTranslator(I18n translator)
     {
-        _translator = _translator;
+        _translator = translator;
     }
 
     @Override

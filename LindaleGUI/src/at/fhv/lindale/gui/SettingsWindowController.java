@@ -73,6 +73,7 @@ public class SettingsWindowController implements Initializable, I_ControllerSett
         controller.setFacade(_facade);
         controller.setTranslator(_translator);
         controller.syncWithConfig();
+        controller.translateGUI();
         _currentSettingsPane.setContent(generalSettings);
     }
 
@@ -110,6 +111,7 @@ public class SettingsWindowController implements Initializable, I_ControllerSett
         controller.setFacade(_facade);
         controller.setTranslator(_translator);
         controller.syncWithConfig();
+        controller.translateGUI();
         _currentSettingsPane.setContent(pane);
     }
     

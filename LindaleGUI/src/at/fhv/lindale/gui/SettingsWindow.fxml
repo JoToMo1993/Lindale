@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
@@ -13,16 +14,19 @@
   <left>
     <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
       <content>
-        <VBox prefHeight="200.0" prefWidth="100.0">
+        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
           <children>
-            <Label id="_generalLabel" alignment="TOP_RIGHT" onMouseClicked="#onGeneralSelected" text="General" VBox.vgrow="NEVER" />
-            <Label id="_advancedLabel" onMouseClicked="#onPluginManagerSelected" text="Plugin Manager" />
-            <Label id="_sourceManagerLabel" onMouseClicked="#onSourceManagerSelected" text="Source Manager" />
-            <Label id="_playerManagerLabel" onMouseClicked="#onPlayerSettingsSelected" text="Player Settings" />
-            <Label id="_shortcutsLabeö" onMouseClicked="#onShortcutsSelected" text="Keyboard Shortcuts" />
-            <Label id="_searchSettingsLabel" onMouseClicked="#onSearchSettingsSelected" text="Search Settings" />
-            <Label id="_advancedLabel" onMouseClicked="#onAdvancedSelected" text="Advanced" />
+            <Label fx:id="_generalLabel" alignment="TOP_RIGHT" onMouseClicked="#onGeneralSelected" text="General" VBox.vgrow="NEVER" />
+            <Label id="_advancedLabel" fx:id="_pluginManagerLabel" onMouseClicked="#onPluginManagerSelected" text="Plugin Manager" />
+            <Label fx:id="_sourceManagerLabel" onMouseClicked="#onSourceManagerSelected" text="Source Manager" />
+            <Label id="_playerManagerLabel" fx:id="_playerSettingsLabel" onMouseClicked="#onPlayerSettingsSelected" text="Player Settings" />
+            <Label id="_shortcutsLabeö" fx:id="_shortcutsLabel" onMouseClicked="#onShortcutsSelected" text="Keyboard Shortcuts" />
+            <Label fx:id="_searchSettingsLabel" onMouseClicked="#onSearchSettingsSelected" text="Search Settings" />
+            <Label fx:id="_advancedLabel" onMouseClicked="#onAdvancedSelected" text="Advanced" />
           </children>
+          <padding>
+            <Insets left="10.0" top="10.0" />
+          </padding>
         </VBox>
       </content>
     </ScrollPane>

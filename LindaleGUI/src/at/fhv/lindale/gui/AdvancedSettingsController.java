@@ -141,12 +141,12 @@ public class AdvancedSettingsController implements Initializable, I_Synchronizab
         {
             _config.setProperty("advanced.rename", "false");
         }
-        if (_renameCheckBox.isSelected())
+        if (_moveCheckBox.isSelected())
         {
-            _config.setProperty("advanced.rename", "true");
+            _config.setProperty("advanced.move", "true");
         } else
         {
-            _config.setProperty("advanced.rename", "false");
+            _config.setProperty("advanced.move", "false");
         }
         if (_deleteCheckBox.isSelected())
         {
@@ -200,9 +200,12 @@ public class AdvancedSettingsController implements Initializable, I_Synchronizab
         _moveCheckBox.setText(_translator.tr(_moveCheckBox.getText()));
         _deleteCheckBox.setText(_translator.tr(_deleteCheckBox.getText()));
         _fileOperationsLabel.setText(_translator.tr(_fileOperationsLabel.getText()));
-        _playerNameField.setPromptText(_translator.tr(_playerNameField.getText()));
-        _commandField.setPromptText(_translator.tr(_commandField.getPromptText()));
+//        _playerNameField.setPromptText(_translator.tr(_playerNameField.getPromptText()));
+//        _commandField.setPromptText(_translator.tr(_commandField.getPromptText()));
+        _playerNameField.setPromptText("");
+        _commandField.setPromptText("");
         _okButton.setText(_translator.tr(_okButton.getText()));
+        _customPlayerLabel.setText(_translator.tr(_customPlayerLabel.getText()));
     }
 
 }
