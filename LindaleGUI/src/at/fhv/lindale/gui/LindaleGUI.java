@@ -36,7 +36,7 @@ public class LindaleGUI extends Application
 
     public static final String GRAPHICS_LOCATION = "/at/fhv/lindale/gui/graphics/";
     public static final String CONIFG_LOCATION = "config.properties";
-    public static final String MESSAGES = "app.i18n.Messages";
+    public static final String MESSAGES = "at.fhv.lindale.i18n.Messages";
     private Properties _config;
 
     @Override
@@ -44,8 +44,7 @@ public class LindaleGUI extends Application
     {
         _config = loadConfig(new File(CONIFG_LOCATION));
         String[] localeString = _config.getProperty("languages.enabled").split("_");
-//        I18n translator = I18nFactory.getI18n(getClass(), MESSAGES, new Locale(localeString[0], localeString[1]));
-        I18n translator = I18nFactory.getI18n(getClass(), MESSAGES, new Locale("bg", "bg"));
+        I18n translator = I18nFactory.getI18n(getClass(), MESSAGES, new Locale(localeString[0], localeString[1]));
         //http://stackoverflow.com/questions/10751271/accessing-fxml-controller-class
         FXMLLoader loader = new FXMLLoader();
         Parent root = (Parent) loader.load(getClass().getResourceAsStream("MainWindow.fxml"));
@@ -108,7 +107,7 @@ public class LindaleGUI extends Application
     private Properties loadConfig(File file) throws IOException
     {
         Properties defaults = new Properties();
-        defaults.setProperty("languages.available", "en_us,de_de,bg_bg,fr_fr,es_es");
+        defaults.setProperty("languages.available", "en_us,de_de,bg_bg,fr_fr");
         defaults.setProperty("languages.enabled", "en_us");
         defaults.setProperty("advanced.enabled", "false");
         defaults.setProperty("advanced.copy", "false");
