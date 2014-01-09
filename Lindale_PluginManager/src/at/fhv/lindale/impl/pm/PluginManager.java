@@ -10,11 +10,13 @@ import at.fhv.lindale.api.container.E_PluginState;
 import at.fhv.lindale.api.container.I_PluginInfo;
 import at.fhv.lindale.api.gui.ViewManager;
 import at.fhv.lindale.api.hf.HibernateFactory;
+import at.fhv.lindale.api.hf.I_HibernateFacade;
 import at.fhv.lindale.api.plugin.I_Plugin;
 import at.fhv.lindale.api.plugin.I_Plugin_Filter;
 import at.fhv.lindale.api.plugin.I_Plugin_IO;
 import at.fhv.lindale.api.plugin.I_Plugin_View;
 import at.fhv.lindale.api.plugin.utils.I_PluginManager;
+import at.fhv.lindale.impl.hf.HibernateFacade;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -63,57 +65,77 @@ public class PluginManager implements I_PluginManager
         _viewManager = vm;
         
         LinkedList<I_Plugin    > pluginsLoaded = new LinkedList<>();
-        List      <I_PluginInfo> pluginsDB     = 
-                  HibernateFactory.GET_HIBERNATE_FACADE().loadAll_PluginInfos();
+        HibernateFacade          hf            =
+                (HibernateFacade) HibernateFactory.GET_HIBERNATE_FACADE();
+        List      <I_PluginInfo> pluginsDB     = hf.loadAll_PluginInfos();
         
-        for(I_Plugin_IO     plugin : _pluginLoader_IO    )
+        if(pluginsDB == null)
         {
-            pluginsLoaded.add(plugin);
-            _ioPlugins.add(plugin);
-            if(!pluginsDB.contains(plugin.getPluginInfo()))
-            {
-                plugin.setup();
-                pluginsDB.add(plugin.getPluginInfo());
-            }
-            E_PluginState state = pluginsDB.get(pluginsDB.indexOf(plugin))
-                                           .getState();
-            if(state == E_PluginState.ACTIVATED)
-            {
-                plugin.ativate(this);
-            }
+            pluginsDB = new LinkedList<>();
         }
-        for(I_Plugin_Filter plugin : _pluginLoader_Filter)
+        
+        int lastSize = pluginsLoaded.size();
+        do
         {
-            pluginsLoaded.add(plugin);
-            _filterPlugins.add(plugin);
-            if(!pluginsDB.contains(plugin.getPluginInfo()))
+            lastSize = pluginsLoaded.size();
+            for(I_Plugin_IO     plugin : _pluginLoader_IO    )
             {
-                plugin.setup();
-                pluginsDB.add(plugin.getPluginInfo());
+                if(pluginsLoaded.containsAll(plugin.getDependencies()))
+                {
+                    pluginsLoaded.add(plugin);
+                    _ioPlugins.add(plugin);
+                    if(!pluginsDB.contains(plugin.getPluginInfo()))
+                    {
+                        plugin.setup();
+                        pluginsDB.add(plugin.getPluginInfo());
+                    }
+                    E_PluginState state = pluginsDB.get(pluginsDB.indexOf(plugin))
+                                                   .getState();
+                    if(state == E_PluginState.ACTIVATED)
+                    {
+                        plugin.activate(this);
+                    }
+                }
             }
-            E_PluginState state = pluginsDB.get(pluginsDB.indexOf(plugin))
-                                           .getState();
-            if(state == E_PluginState.ACTIVATED)
+            for(I_Plugin_Filter plugin : _pluginLoader_Filter)
             {
-                plugin.ativate(this);
+                if(pluginsLoaded.containsAll(plugin.getDependencies()))
+                {
+                    pluginsLoaded.add(plugin);
+                    _filterPlugins.add(plugin);
+                    if(!pluginsDB.contains(plugin.getPluginInfo()))
+                    {
+                        plugin.setup();
+                        pluginsDB.add(plugin.getPluginInfo());
+                    }
+                    E_PluginState state = pluginsDB.get(pluginsDB.indexOf(plugin))
+                                                   .getState();
+                    if(state == E_PluginState.ACTIVATED)
+                    {
+                        plugin.activate(this);
+                    }
+                }
             }
-        }
-        for(I_Plugin_View   plugin : _pluginLoader_View  )
-        {
-            pluginsLoaded.add(plugin);
-            _viewPlugins.add(plugin);
-            if(!pluginsDB.contains(plugin.getPluginInfo()))
+            for(I_Plugin_View   plugin : _pluginLoader_View  )
             {
-                plugin.setup();
-                pluginsDB.add(plugin.getPluginInfo());
+                if(pluginsLoaded.containsAll(plugin.getDependencies()))
+                {
+                    pluginsLoaded.add(plugin);
+                    _viewPlugins.add(plugin);
+                    if(!pluginsDB.contains(plugin.getPluginInfo()))
+                    {
+                        plugin.setup();
+                        pluginsDB.add(plugin.getPluginInfo());
+                    }
+                    E_PluginState state = pluginsDB.get(pluginsDB.indexOf(plugin))
+                                                   .getState();
+                    if(state == E_PluginState.ACTIVATED)
+                    {
+                        plugin.activate(this);
+                    }
+                }
             }
-            E_PluginState state = pluginsDB.get(pluginsDB.indexOf(plugin))
-                                           .getState();
-            if(state == E_PluginState.ACTIVATED)
-            {
-                plugin.ativate(this);
-            }
-        }
+        } while(lastSize != pluginsLoaded.size());
         
         return pluginsLoaded;
     }

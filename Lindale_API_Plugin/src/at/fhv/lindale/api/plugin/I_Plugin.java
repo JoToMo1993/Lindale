@@ -19,7 +19,7 @@ import java.util.List;
 public interface I_Plugin
 {
     public void           setup();
-    public void           ativate(I_PluginManager pm);
+    public void           activate(I_PluginManager pm);
     public List<I_Plugin> getDependencies();
     public I_PluginInfo   getPluginInfo();
 }

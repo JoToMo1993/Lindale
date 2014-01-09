@@ -15,7 +15,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import static javax.persistence.InheritanceType.SINGLE_TABLE;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -30,8 +29,6 @@ import javax.persistence.Table;
 @Table(name="COLLECTION")
 public abstract class A_Collection implements I_AbstractCollection, Serializable
 {
-    @ManyToMany
-    private List<Collection> collections;
     @Column(name = "CID")
     @Id
     private int    _ID;

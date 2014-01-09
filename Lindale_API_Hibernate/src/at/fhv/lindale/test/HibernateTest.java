@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package test;
+package at.fhv.lindale.test;
 
 import at.fhv.lindale.api.container.I_Collection;
 import at.fhv.lindale.api.container.I_File;
