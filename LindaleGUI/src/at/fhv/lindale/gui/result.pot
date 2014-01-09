@@ -155,3 +155,7 @@ msgstr ""
 
 msgid  "Search Settings"
 msgstr ""
+
+msgid  "Deactivate"
+msgstr ""
+
